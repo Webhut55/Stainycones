@@ -38,12 +38,12 @@
         .product-page { display: flex; gap: 50px; margin-top: 20px; background: var(--color-white); padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
         .product-gallery { flex: 1; max-width: 50%; }
         .main-image-container { width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 12px; background: var(--color-light-grey); position: relative; }
-        .main-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .main-image { width: 100%; height: 100%; object-fit: cover; image-orientation: from-image; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .main-image-container:hover .main-image { transform: scale(1.06); }
 
         .thumbnail-container { display: flex; gap: 15px; margin-top: 15px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
         .thumbnail-container::-webkit-scrollbar { display: none; }
-        .thumbnail { width: 75px; height: 75px; object-fit: cover; cursor: pointer; border: 2px solid transparent; border-radius: 8px; transition: all 0.3s ease; opacity: 0.6; }
+        .thumbnail { width: 75px; height: 75px; object-fit: cover; image-orientation: from-image; cursor: pointer; border: 2px solid transparent; border-radius: 8px; transition: all 0.3s ease; opacity: 0.6; }
         .thumbnail:hover { opacity: 1; transform: translateY(-2px); }
         .thumbnail.active { border-color: var(--color-black); opacity: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
