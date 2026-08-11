@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StainyCones - Henna Store</title>
+    <meta name="description" content="Shop premium henna cones, aftercare products, bridal boxes and more at StainyCones.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-black: #111111;
+            --color-white: #FFFFFF;
+            --color-light-grey: #F5F5F5;
+            --color-dark-grey: #333333;
+            --color-whatsapp: #25D366;
+            --color-accent: #f9f9f9;
+            --color-border: #ebebeb;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fafafa;
+            color: var(--color-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 40px;
+            border-bottom: 1px solid var(--color-border);
+            background: rgba(255,255,255,0.96);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .logo-main-line { display: flex; align-items: center; gap: 10px; }
+        .logo-image-container {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 2px solid var(--color-black);
+            overflow: hidden; flex-shrink: 0;
+        }
+        .logo-image { width: 100%; height: 100%; object-fit: cover; }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: 2px; }
+
+        .cart-link {
+            text-decoration: none; position: relative;
+            display: flex; align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .cart-link:hover { transform: scale(1.1); }
+        .cart-logo { width: 38px; height: 38px; }
+        .cart-count {
+            position: absolute; top: -5px; right: -5px;
+            background-color: var(--color-whatsapp);
+            color: var(--color-white); font-size: 0.7rem;
+            padding: 2px 6px; border-radius: 50%;
+            font-weight: bold; box-shadow: 0 2px 6px rgba(37,211,102,0.4);
+        }
+
+        /* --- CONTAINER --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px; }
+
+        /* --- CATEGORIES --- */
+        .categories-section { padding: 25px 0 10px; }
+        .section-label {
+            font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 2px; color: #999; font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .category-list {
+            display: flex; gap: 20px;
+            overflow-x: auto; padding-bottom: 12px;
+            scrollbar-width: none;
+        }
+        .category-list::-webkit-scrollbar { display: none; }
+        .category-item {
+            text-align: center; cursor: pointer;
+            min-width: 85px; flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        .category-item:hover { transform: translateY(-3px); }
+        .category-item.active .category-icon { border-color: var(--color-black); }
+        .category-item.active .category-name { font-weight: 700; color: var(--color-black); }
+        .category-icon {
+            width: 75px; height: 75px; border-radius: 50%;
+            border: 2px solid var(--color-border); margin: 0 auto 8px;
+            overflow: hidden; background: var(--color-white);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .category-icon:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .category-icon-img { width: 100%; height: 100%; object-fit: cover; }
+        .category-name {
+            font-size: 0.78rem; font-weight: 500;
+            color: var(--color-dark-grey); transition: color 0.3s;
+        }
+
+        /* --- PRODUCTS --- */
+        .products-header {
+            display: flex; align-items: center;
+            justify-content: space-between;
+            padding: 20px 0 15px;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 25px;
+        }
+        .products-title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.3px; }
+        .product-count { font-size: 0.85rem; color: #999; font-weight: 500; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 22px;
+        }
+        .product-card {
+            text-decoration: none; color: inherit;
+            border: 1px solid var(--color-border);
+            border-radius: 16px; overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--color-white);
+            display: block;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 35px rgba(0,0,0,0.09);
+            border-color: transparent;
+        }
+        .product-image-area { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: var(--color-light-grey); }
+        .slide-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .slide-img { transform: scale(1.07); }
+        .product-info { padding: 14px 16px 18px; }
+        .product-name {
+            font-size: 0.82rem; font-weight: 700;
+            text-transform: uppercase; color: var(--color-dark-grey);
+            letter-spacing: 0.3px; margin-bottom: 5px;
+        }
+        .product-price { font-size: 1.15rem; font-weight: 800; color: var(--color-black); }
+
+        /* No results */
+        .no-results {
+            grid-column: 1/-1; text-align: center;
+            padding: 60px 20px; color: #aaa;
+            font-size: 0.95rem; font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 14px 20px; }
+            .logo { font-size: 1.2rem; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+            .product-name { font-size: 0.75rem; }
+            .product-price { font-size: 1rem; }
+        }
+        @media (max-width: 400px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        }
+    </style>
+</head>
+<body onload="initPage()">
+
+    <header class="header">
+        <div class="logo-main-line">
+            <div class="logo-image-container">
+                <img src="images/store-logo.jpeg" class="logo-image" alt="StainyCones Logo" loading="eager">
+            </div>
+            <div class="logo">STAINYCONES</div>
+        </div>
+        <a href="cart.html" class="cart-link" aria-label="View Cart">
+            <img src="images/cart-icon.jpeg" class="cart-logo" alt="Cart">
+            <span class="cart-count" id="cart-count">0</span>
+        </a>
+    </header>
+
+    <main class="container">
+        <section class="categories-section">
+            <p class="section-label">Browse by category</p>
+            <div class="category-list">
+                <div class="category-item active" id="cat-all" onclick="filterProducts('all')">
+                    <div class="category-icon"><img src="images/category-all.jpeg" class="category-icon-img" alt="All" loading="eager"></div>
+                    <span class="category-name">All</span>
+                </div>
+                <div class="category-item" id="cat-henna" onclick="filterProducts('henna')">
+                    <div class="category-icon"><img src="images/category-henna.jpeg" class="category-icon-img" alt="Henna" loading="lazy"></div>
+                    <span class="category-name">Henna</span>
+                </div>
+                <div class="category-item" id="cat-aftercare" onclick="filterProducts('aftercare')">
+                    <div class="category-icon"><img src="images/category-aftercare.jpeg" class="category-icon-img" alt="Aftercare" loading="lazy"></div>
+                    <span class="category-name">Aftercare</span>
+                </div>
+                <div class="category-item" id="cat-bridals" onclick="filterProducts('bridals')">
+                    <div class="category-icon"><img src="images/category-bridals.jpeg" class="category-icon-img" alt="Bridals" loading="lazy"></div>
+                    <span class="category-name">Bridals</span>
+                </div>
+                <div class="category-item" id="cat-nail" onclick="filterProducts('nail')">
+                    <div class="category-icon"><img src="images/category-nail.jpeg" class="category-icon-img" alt="Nail" loading="lazy"></div>
+                    <span class="category-name">Nail</span>
+                </div>
+                <div class="category-item" id="cat-hair-oil" onclick="filterProducts('hair-oil')">
+                    <div class="category-icon"><img src="images/category-hair-oil.jpeg" class="category-icon-img" alt="Hair Oil" loading="lazy"></div>
+                    <span class="category-name">Hair Oil</span>
+                </div>
+                <div class="category-item" id="cat-practice" onclick="filterProducts('practice')">
+                    <div class="category-icon"><img src="images/category-practice.jpeg" class="category-icon-img" alt="Practice" loading="lazy"></div>
+                    <span class="category-name">Practice</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="products-header">
+            <h1 class="products-title">Products</h1>
+            <span class="product-count" id="product-count"></span>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+            <a class="product-card" href="product.html?id=8" data-category="henna"><div class="product-image-area"><img src="images/hcones-image-1.jpeg" class="slide-img" alt="Organic Henna Cones" loading="lazy"></div><div class="product-info"><p class="product-name">Organic Henna Cones</p><p class="product-price">₹50</p></div></a>
+            <a class="product-card" href="product.html?id=7" data-category="henna"><div class="product-image-area"><img src="images/red-nailcones-1.jpeg" class="slide-img" alt="Red Nailcones" loading="lazy"></div><div class="product-info"><p class="product-name">Red Nailcones</p><p class="product-price">₹30</p></div></a>
+            <a class="product-card" href="product.html?id=12" data-category="bridals"><div class="product-image-area"><img src="images/mini-bridal-box.jpeg" class="slide-img" alt="Mini Bridal Box" loading="lazy"></div><div class="product-info"><p class="product-name">Mini Bridal Box</p><p class="product-price">₹390</p></div></a>
+            <a class="product-card" href="product.html?id=13" data-category="bridals"><div class="product-image-area"><img src="images/mega-bridal-box.jpeg" class="slide-img" alt="Mega Bridal Box" loading="lazy"></div><div class="product-info"><p class="product-name">Mega Bridal Box</p><p class="product-price">₹520</p></div></a>
+            <a class="product-card" href="product.html?id=6" data-category="aftercare"><div class="product-image-area"><img src="images/balm-image-1.jpeg" class="slide-img" alt="Aftercare Balm" loading="lazy"></div><div class="product-info"><p class="product-name">Aftercare Balm</p><p class="product-price">₹40</p></div></a>
+            <a class="product-card" href="product.html?id=5" data-category="aftercare"><div class="product-image-area"><img src="images/spray-image-1.jpeg" class="slide-img" alt="Sealant Spray" loading="lazy"></div><div class="product-info"><p class="product-name">Sealant Spray</p><p class="product-price">₹40</p></div></a>
+            <a class="product-card" href="product.html?id=9" data-category="aftercare"><div class="product-image-area"><img src="images/aftercare-oil-1.jpeg" class="slide-img" alt="Aftercare Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Aftercare Oil</p><p class="product-price">₹40</p></div></a>
+            <a class="product-card" href="product.html?id=14" data-category="aftercare"><div class="product-image-area"><img src="images/mefix-tape-1.jpeg" class="slide-img" alt="Mefix Tape" loading="lazy"></div><div class="product-info"><p class="product-name">Mefix Tape</p><p class="product-price">₹45</p></div></a>
+            <a class="product-card" href="product.html?id=15" data-category="henna"><div class="product-image-area"><img src="images/black-henna-cone.jpeg" class="slide-img" alt="Black Henna" loading="lazy"></div><div class="product-info"><p class="product-name">Black Henna</p><p class="product-price">₹45</p></div></a>
+            <a class="product-card" href="product.html?id=10" data-category="practice"><div class="product-image-area"><img src="images/practice-book-1.jpeg" class="slide-img" alt="Reusable Practice Book" loading="lazy"></div><div class="product-info"><p class="product-name">Reusable Practice Book</p><p class="product-price">₹549</p></div></a>
+            <a class="product-card" href="product.html?id=11" data-category="henna"><div class="product-image-area"><img src="images/henna-powder-1.jpeg" class="slide-img" alt="Organic Henna Powder" loading="lazy"></div><div class="product-info"><p class="product-name">Organic Henna Powder</p><p class="product-price">₹190</p></div></a>
+            <a class="product-card" href="product.html?id=16" data-category="aftercare"><div class="product-image-area"><img src="images/tea-tree-oil.jpeg" class="slide-img" alt="Tea Tree Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Tea Tree Oil</p><p class="product-price">₹200</p></div></a>
+            <a class="product-card" href="product.html?id=17" data-category="aftercare"><div class="product-image-area"><img src="images/eucalyptus-oil.jpeg" class="slide-img" alt="Eucalyptus Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Eucalyptus Oil</p><p class="product-price">₹160</p></div></a>
+            <a class="product-card" href="product.html?id=18" data-category="henna"><div class="product-image-area"><img src="images/beginners-eucalyptus-kit.jpeg" class="slide-img" alt="Beginners Eucalyptus Kit" loading="lazy"></div><div class="product-info"><p class="product-name">Beginners Eucalyptus Kit</p><p class="product-price">₹370</p></div></a>
+            <a class="product-card" href="product.html?id=19" data-category="henna"><div class="product-image-area"><img src="images/beginners-teatree-kit.jpeg" class="slide-img" alt="Beginners Tea Tree Kit" loading="lazy"></div><div class="product-info"><p class="product-name">Beginners Tea Tree Kit</p><p class="product-price">₹410</p></div></a>
+            <a class="product-card" href="product.html?id=21" data-category="nail"><div class="product-image-area"><img src="images/diy-nailcone-kit.jpeg" class="slide-img" alt="DIY Nailcone Kit" loading="lazy"></div><div class="product-info"><p class="product-name">DIY Nailcone Kit</p><p class="product-price">₹199</p></div></a>
+            <a class="product-card" href="product.html?id=20" data-category="henna"><div class="product-image-area"><img src="images/henna-paste.jpeg" class="slide-img" alt="Henna Paste" loading="lazy"></div><div class="product-info"><p class="product-name">Henna Paste</p><p class="product-price">₹500</p></div></a>
+            <a class="product-card" href="product.html?id=4" data-category="nail"><div class="product-image-area"><img src="images/liquid-image-1.jpeg" class="slide-img" alt="Nail Liquid" loading="lazy"></div><div class="product-info"><p class="product-name">Nail Liquid</p><p class="product-price">₹60</p></div></a>
+            <a class="product-card" href="product.html?id=2" data-category="hair-oil"><div class="product-image-area"><img src="images/oil-image-1.jpeg" class="slide-img" alt="Herbal Hair Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Herbal Hair Oil</p><p class="product-price">₹100</p></div></a>
+            <a class="product-card" href="product.html?id=3" data-category="henna"><div class="product-image-area"><img src="images/cones-image-1.jpeg" class="slide-img" alt="Empty Cones" loading="lazy"></div><div class="product-info"><p class="product-name">Empty Cones</p><p class="product-price">₹5</p></div></a>
+            <a class="product-card" href="product.html?id=22" data-category="nail"><div class="product-image-area"><img src="images/nail-paste-image.jpeg" class="slide-img" alt="Nail Paste" loading="lazy"></div><div class="product-info"><p class="product-name">Nail Paste</p><p class="product-price">₹350</p></div></a>
+        </div>
+    </main>
+
+    <script>
+        function initPage() {
+            updateCartCount();
+            updateProductCount();
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('mehndiStoreCart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').innerText = count;
+        }
+
+        function updateProductCount() {
+            const visible = document.querySelectorAll('.product-card:not([style*="none"])').length;
+            document.getElementById('product-count').innerText = `${visible} items`;
+        }
+
+        function filterProducts(category) {
+            // Update active tab
+            document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+            const activeEl = document.getElementById(`cat-${category}`);
+            if (activeEl) activeEl.classList.add('active');
+
+            // Show/hide cards
+            const cards = document.querySelectorAll('.product-card');
+            let shown = 0;
+            cards.forEach(card => {
+                const match = category === 'all' || card.dataset.category === category;
+                card.style.display = match ? 'block' : 'none';
+                if (match) shown++;
+            });
+
+            // Update count
+            document.getElementById('product-count').innerText = `${shown} items`;
+        }
+    </script>
+</body>
+</html>
