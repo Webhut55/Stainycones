@@ -3,185 +3,846 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StainyCones - Henna Store</title>
+    <title>StainyCones - Official Store</title>
     <meta name="description" content="Shop premium henna cones, aftercare products, bridal boxes and more at StainyCones.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --color-black: #111111;
-            --color-white: #FFFFFF;
-            --color-light-grey: #F5F5F5;
-            --color-dark-grey: #333333;
-            --color-whatsapp: #25D366;
-            --color-accent: #f9f9f9;
-            --color-border: #ebebeb;
+            --color-primary: #111827;
+            --color-primary-hover: #1F2937;
+            --color-accent: #9A7B3E;
+            --color-accent-light: #FBF8F1;
+            --color-accent-border: #E6D8B8;
+            --color-bg: #F9FAFB;
+            --color-surface: #FFFFFF;
+            --color-text: #111827;
+            --color-text-muted: #6B7280;
+            --color-border: #E5E7EB;
+            --color-success: #059669;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #fafafa;
-            color: var(--color-black);
-            line-height: 1.6;
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
         /* --- HEADER --- */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 40px;
+            background: rgba(255, 255, 255, 0.96);
             border-bottom: 1px solid var(--color-border);
-            background: rgba(255,255,255,0.96);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-        .logo-main-line { display: flex; align-items: center; gap: 10px; }
+        .header-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .logo-main-line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--color-text);
+        }
         .logo-image-container {
-            width: 36px; height: 36px; border-radius: 50%;
-            border: 2px solid var(--color-black);
-            overflow: hidden; flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            flex-shrink: 0;
         }
         .logo-image { width: 100%; height: 100%; object-fit: cover; }
-        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: 2px; }
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--color-primary);
+        }
+
+        /* 5 YEARS GIFT BOX TRIGGER IN HEADER (LOGO & NAME SECTION) */
+        .anniversary-trigger-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-accent-light);
+            color: var(--color-primary);
+            border: 1px solid var(--color-accent-border);
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-family: var(--font-main);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .anniversary-trigger-btn:hover {
+            background: #F4EFE2;
+            border-color: var(--color-accent);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--color-accent);
+            display: inline-block;
+            animation: pulseDot 2s infinite;
+        }
+        .status-dot.opened {
+            background-color: var(--color-success);
+            animation: none;
+        }
+        @keyframes pulseDot {
+            0% { box-shadow: 0 0 0 0 rgba(154, 123, 62, 0.5); }
+            70% { box-shadow: 0 0 0 6px rgba(154, 123, 62, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(154, 123, 62, 0); }
+        }
 
         .cart-link {
-            text-decoration: none; position: relative;
-            display: flex; align-items: center;
-            transition: transform 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 6px;
+            border-radius: 6px;
+            transition: background 0.2s ease;
         }
-        .cart-link:hover { transform: scale(1.1); }
-        .cart-logo { width: 38px; height: 38px; }
+        .cart-link:hover { background: var(--color-bg); }
+        .cart-logo { width: 28px; height: 28px; border-radius: 4px; }
         .cart-count {
-            position: absolute; top: -5px; right: -5px;
-            background-color: var(--color-whatsapp);
-            color: var(--color-white); font-size: 0.7rem;
-            padding: 2px 6px; border-radius: 50%;
-            font-weight: bold; box-shadow: 0 2px 6px rgba(37,211,102,0.4);
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background-color: var(--color-primary);
+            color: var(--color-surface);
+            font-size: 0.68rem;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            border-radius: 9px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- CLAIMED REWARD ACTIVE BANNER --- */
+        .active-reward-bar {
+            background: var(--color-primary);
+            color: var(--color-surface);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            display: none;
+        }
+        .active-reward-bar.show {
+            display: block;
+        }
+        .active-reward-bar span {
+            font-weight: 700;
+            color: #E6D8B8;
+            text-transform: uppercase;
+            margin: 0 4px;
         }
 
         /* --- CONTAINER --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px 64px; }
 
         /* --- CATEGORIES --- */
-        .categories-section { padding: 25px 0 10px; }
+        .categories-section { padding: 28px 0 12px; }
         .section-label {
-            font-size: 0.75rem; text-transform: uppercase;
-            letter-spacing: 2px; color: #999; font-weight: 700;
-            margin-bottom: 18px;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--color-text-muted);
+            font-weight: 600;
+            margin-bottom: 16px;
         }
         .category-list {
-            display: flex; gap: 20px;
-            overflow-x: auto; padding-bottom: 12px;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 12px;
             scrollbar-width: none;
         }
         .category-list::-webkit-scrollbar { display: none; }
         .category-item {
-            text-align: center; cursor: pointer;
-            min-width: 85px; flex-shrink: 0;
-            transition: transform 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            min-width: 82px;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
         }
-        .category-item:hover { transform: translateY(-3px); }
-        .category-item.active .category-icon { border-color: var(--color-black); }
-        .category-item.active .category-name { font-weight: 700; color: var(--color-black); }
+        .category-item:hover { transform: translateY(-2px); }
+        .category-item.active .category-icon {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.12);
+        }
+        .category-item.active .category-name {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
         .category-icon {
-            width: 75px; height: 75px; border-radius: 50%;
-            border: 2px solid var(--color-border); margin: 0 auto 8px;
-            overflow: hidden; background: var(--color-white);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 1.5px solid var(--color-border);
+            margin: 0 auto 8px;
+            overflow: hidden;
+            background: var(--color-surface);
+            transition: all 0.2s ease;
         }
-        .category-icon:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .category-icon-img { width: 100%; height: 100%; object-fit: cover; }
         .category-name {
-            font-size: 0.78rem; font-weight: 500;
-            color: var(--color-dark-grey); transition: color 0.3s;
+            font-size: 0.76rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            transition: color 0.2s;
         }
 
         /* --- PRODUCTS --- */
         .products-header {
-            display: flex; align-items: center;
+            display: flex;
+            align-items: center;
             justify-content: space-between;
-            padding: 20px 0 15px;
+            padding: 24px 0 16px;
             border-bottom: 1px solid var(--color-border);
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
-        .products-title { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.3px; }
-        .product-count { font-size: 0.85rem; color: #999; font-weight: 500; }
+        .products-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: -0.3px;
+        }
+        .product-count {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+            gap: 24px;
         }
         .product-card {
-            text-decoration: none; color: inherit;
+            text-decoration: none;
+            color: inherit;
             border: 1px solid var(--color-border);
-            border-radius: 16px; overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: var(--color-white);
-            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            background: var(--color-surface);
+            display: flex;
+            flex-direction: column;
         }
         .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 35px rgba(0,0,0,0.09);
-            border-color: transparent;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #D1D5DB;
         }
-        .product-image-area { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: var(--color-light-grey); }
-        .slide-img { width: 100%; height: 100%; object-fit: cover; image-orientation: from-image; transition: transform 0.5s ease; }
-        .product-card:hover .slide-img { transform: scale(1.07); }
-        .product-info { padding: 14px 16px 18px; }
+        .product-image-area {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #F3F4F6;
+        }
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-orientation: from-image;
+            transition: transform 0.4s ease;
+        }
+        .product-card:hover .slide-img { transform: scale(1.04); }
+        .product-info { padding: 16px; }
         .product-name {
-            font-size: 0.82rem; font-weight: 700;
-            text-transform: uppercase; color: var(--color-dark-grey);
-            letter-spacing: 0.3px; margin-bottom: 5px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--color-text);
+            letter-spacing: 0.4px;
+            margin-bottom: 6px;
         }
-        .product-price { font-size: 1.15rem; font-weight: 800; color: var(--color-black); }
+        .product-price {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
 
-        /* No results */
-        .no-results {
-            grid-column: 1/-1; text-align: center;
-            padding: 60px 20px; color: #aaa;
-            font-size: 0.95rem; font-weight: 500;
+        /* ====================================================
+           PROFESSIONAL 5 YEARS GIFT BOX MODAL
+        ==================================================== */
+        .gift-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(17, 24, 39, 0.72);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gift-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        .gift-modal-card {
+            background: var(--color-surface);
+            width: 100%;
+            max-width: 540px;
+            border-radius: 12px;
+            padding: 48px 40px 40px;
+            text-align: center;
+            position: relative;
+            z-index: 10001;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(0.95) translateY(10px);
+            transition: transform 0.3s ease;
+        }
+        .gift-modal-overlay.active .gift-modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-family: var(--font-main);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .modal-close-btn:hover {
+            background: var(--color-border);
+            color: var(--color-primary);
+        }
+
+        .anniversary-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            background: var(--color-accent-light);
+            border: 1px solid var(--color-accent-border);
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 14px;
+        }
+
+        .anniversary-heading {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .anniversary-sub {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 32px;
+        }
+
+        /* PHYSICAL GIFT BOX GRAPHIC (CSS BOX WITH LID & RIBBON) */
+        .gift-stage {
+            height: 245px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0 auto 32px;
+            user-select: none;
+        }
+
+        .physical-gift-box {
+            position: relative;
+            width: 220px;
+            height: 195px;
+            cursor: pointer;
+            animation: subtleFloat 3s ease-in-out infinite;
+            transition: transform 0.25s ease;
+            z-index: 4;
+        }
+        .physical-gift-box:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        /* Top Bow */
+        .box-bow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 88px;
+            height: 30px;
+            z-index: 6;
+            transition: all 0.5s ease;
+        }
+        .box-bow::before,
+        .box-bow::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 26px;
+            border: 4px solid var(--color-accent);
+            top: 4px;
+            box-sizing: border-box;
+        }
+        .box-bow::before {
+            left: 2px;
+            border-radius: 50% 50% 0 50%;
+            transform: rotate(-10deg);
+        }
+        .box-bow::after {
+            right: 2px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(10deg);
+        }
+        .box-bow-knot {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 14px;
+            background: var(--color-accent);
+            border-radius: 3px;
+            z-index: 7;
+        }
+
+        /* Box Lid */
+        .box-lid {
+            position: absolute;
+            top: 26px;
+            left: -8px;
+            width: 236px;
+            height: 40px;
+            background: var(--color-primary);
+            border: 1px solid var(--color-accent);
+            border-radius: 4px;
+            z-index: 5;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            transition: all 0.55s ease;
+            overflow: hidden;
+        }
+        .box-lid::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 100%;
+            background: var(--color-accent);
+        }
+
+        /* Box Body */
+        .box-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 220px;
+            height: 132px;
+            background: var(--color-primary);
+            border: 1px solid var(--color-accent);
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            z-index: 3;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: all 0.45s ease;
+        }
+        .box-body::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 100%;
+            background: var(--color-accent);
+            z-index: 1;
+        }
+        .box-body::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 22px;
+            background: var(--color-accent);
+            z-index: 1;
+        }
+
+        /* Text Plate on Box */
+        .box-label-plate {
+            position: relative;
+            z-index: 2;
+            background: var(--color-surface);
+            border: 1px solid var(--color-accent);
+            padding: 10px 18px;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+        .box-plate-sub {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: 2px;
+        }
+        .box-plate-title {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-primary);
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .physical-gift-box.shaking {
+            animation: boxShake 0.1s infinite;
+            pointer-events: none;
+        }
+        @keyframes boxShake {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-5px, 2px) rotate(-1.5deg); }
+            50% { transform: translate(5px, -2px) rotate(1.5deg); }
+            75% { transform: translate(-4px, -1px) rotate(-1deg); }
+            100% { transform: translate(4px, 1px) rotate(1deg); }
+        }
+
+        .physical-gift-box.opened {
+            pointer-events: none;
+            animation: none;
+        }
+        .physical-gift-box.opened .box-lid,
+        .physical-gift-box.opened .box-bow {
+            transform: translateY(-95px) rotate(-12deg);
+            opacity: 0;
+        }
+        .physical-gift-box.opened .box-body {
+            transform: translateY(25px) scale(0.92);
+            opacity: 0;
+        }
+
+        /* Revealed Prize Card (Text Only) */
+        .prize-reveal-card {
+            position: absolute;
+            inset: 0;
+            background: var(--color-accent-light);
+            border: 1.5px solid var(--color-accent);
+            border-radius: 8px;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.94);
+            transition: all 0.4s ease;
+            pointer-events: none;
+            z-index: 6;
+        }
+        .prize-reveal-card.show {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .prize-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-accent);
+            margin-bottom: 10px;
+        }
+        .prize-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+        .prize-subtext {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            max-width: 340px;
+            line-height: 1.5;
+        }
+
+        /* Modal Action Button */
+        .gift-cta-btn {
+            width: 100%;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--color-primary);
+            color: var(--color-surface);
+        }
+        .gift-cta-btn:hover {
+            background: var(--color-primary-hover);
+        }
+        .gift-cta-btn.claim-btn {
+            background: var(--color-accent);
+            color: var(--color-surface);
+        }
+        .gift-cta-btn.claim-btn:hover {
+            background: #846832;
+        }
+
+        .tap-hint {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: 14px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--color-primary);
+            color: var(--color-surface);
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 10005;
+            box-shadow: var(--shadow-lg);
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
         @media (max-width: 768px) {
-            .header { padding: 14px 20px; }
-            .logo { font-size: 1.2rem; }
+            .header-inner { padding: 14px 16px; }
+            .brand-section { gap: 10px; }
+            .logo { font-size: 1rem; }
+            .anniversary-trigger-btn { padding: 6px 10px; font-size: 0.68rem; }
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-            .product-name { font-size: 0.75rem; }
-            .product-price { font-size: 1rem; }
+            .gift-modal-card { padding: 40px 24px 32px; }
+            .anniversary-heading { font-size: 1.5rem; }
+            .prize-title { font-size: 1.65rem; }
         }
-        @media (max-width: 400px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+        /* ====================================================
+           AESTHETIC REFINEMENTS
+        ==================================================== */
+        :root {
+            --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+            --gold-deep: #8A6A2B;
+            --gold-mid: #C9A24B;
+            --gold-soft: #E6D8B8;
+            --ivory: #FBF9F5;
+        }
+        body { background-color: var(--ivory); }
+        .header { border-bottom-color: #EFE7D3; }
+        ::selection { background: var(--gold-soft); color: var(--color-primary); }
+
+        .logo { font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; letter-spacing: 3px; }
+        .logo-image-container { border-color: var(--gold-soft); }
+        .section-label { color: var(--gold-deep); letter-spacing: 2px; }
+        .category-icon { border-color: #EFE7D3; }
+        .category-item.active .category-icon { border-color: var(--gold-mid); box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.18); }
+        .products-header { border-bottom-color: #EFE7D3; }
+        .products-title { font-family: var(--font-display); font-size: 2rem; font-weight: 600; letter-spacing: 0.5px; }
+        .product-card { border-color: #F0E9D8; border-radius: 10px; }
+        .product-card:hover { border-color: var(--gold-soft); box-shadow: 0 14px 30px -8px rgba(138, 106, 43, 0.18), 0 4px 8px -4px rgba(0, 0, 0, 0.05); }
+        .product-name { letter-spacing: 0.8px; }
+        .product-price { color: var(--gold-deep); }
+        .anniversary-heading { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; }
+        .prize-title { font-family: var(--font-display); }
+
+        /* --- ANNIVERSARY TITLE (between logo and categories) --- */
+        .anniversary-banner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 64px 24px 44px;
+            text-align: center;
+        }
+        .banner-rule {
+            display: block;
+            width: 72px;
+            height: 1px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
+        }
+        .anniversary-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: clamp(2.5rem, 7vw, 4.75rem);
+            line-height: 1.08;
+            letter-spacing: 0.02em;
+            margin: 26px 0 0;
+            color: var(--gold-deep);
+            background: linear-gradient(100deg, #7A5C22 0%, #C9A24B 38%, #E3C77A 52%, #B8893A 70%, #7A5C22 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .anniversary-offer { margin: 22px 0 26px; }
+        .anniversary-offer a {
+            display: inline-block;
+            font-family: var(--font-main);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--color-primary);
+            border: 1px solid var(--gold-mid);
+            padding: 15px 38px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.7);
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
+        .anniversary-offer a:hover,
+        .anniversary-offer a:focus-visible {
+            background: var(--color-primary);
+            color: var(--gold-soft);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            outline: none;
+        }
+        @media (max-width: 768px) {
+            .anniversary-banner { padding: 44px 16px 30px; }
+            .anniversary-offer a { padding: 13px 26px; letter-spacing: 2.4px; }
+            .anniversary-heading { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body onload="initPage()">
 
+    <div class="toast" id="toast"></div>
+
+    <!-- Active Claimed Gift Notification Bar -->
+    <div id="active-reward-bar" class="active-reward-bar">
+        Anniversary Reward Active: <span id="active-reward-name"></span> — Add items to your bag to claim at checkout.
+    </div>
+
+    <!-- HEADER: LOGO, NAME & 5 YEARS GIFT BOX -->
     <header class="header">
-        <div class="logo-main-line">
-            <div class="logo-image-container">
-                <img src="images/store-logo.jpeg" class="logo-image" alt="StainyCones Logo" loading="eager">
+        <div class="header-inner">
+            <div class="brand-section">
+                <a href="index.html" class="logo-main-line">
+                    <div class="logo-image-container">
+                        <img src="images/store-logo.jpeg" class="logo-image" alt="StainyCones Logo" loading="eager">
+                    </div>
+                    <div class="logo">STAINYCONES</div>
+                </a>
             </div>
-            <div class="logo">STAINYCONES</div>
+
+            <a href="cart.html" class="cart-link" aria-label="View Cart">
+                <img src="images/cart-icon.jpeg" class="cart-logo" alt="Cart">
+                <span class="cart-count" id="cart-count">0</span>
+            </a>
         </div>
-        <a href="cart.html" class="cart-link" aria-label="View Cart">
-            <img src="images/cart-icon.jpeg" class="cart-logo" alt="Cart">
-            <span class="cart-count" id="cart-count">0</span>
-        </a>
     </header>
+
+    <!-- 5 YEARS ANNIVERSARY TITLE -->
+    <section class="anniversary-banner" aria-label="Anniversary celebration">
+        <span class="banner-rule" aria-hidden="true"></span>
+        <h2 class="anniversary-title">5 Years Of StainyCones</h2>
+        <h3 class="anniversary-offer">
+            <a href="#gift-modal" onclick="openGiftBoxModal(); return false;">Claim Anniversary Offers</a>
+        </h3>
+        <span class="banner-rule" aria-hidden="true"></span>
+    </section>
 
     <main class="container">
         <section class="categories-section">
-            <p class="section-label">Browse by category</p>
+            <p class="section-label">Browse by Category</p>
             <div class="category-list">
                 <div class="category-item active" id="cat-all" onclick="filterProducts('all')">
                     <div class="category-icon"><img src="images/category-all.jpeg" class="category-icon-img" alt="All" loading="eager"></div>
@@ -214,40 +875,98 @@
             </div>
         </section>
 
-        <div class="products-header">
+        <div class="products-header" id="catalog-section">
             <h1 class="products-title">Products</h1>
             <span class="product-count" id="product-count"></span>
         </div>
 
         <div class="product-grid" id="product-grid">
-            <a class="product-card" href="product.html?id=8" data-category="henna"><div class="product-image-area"><img src="images/hcones-image-1.jpeg" class="slide-img" alt="Organic Henna Cones" loading="lazy"></div><div class="product-info"><p class="product-name">Organic Henna Cones</p><p class="product-price">₹50</p></div></a>
-            <a class="product-card" href="product.html?id=7" data-category="henna"><div class="product-image-area"><img src="images/red-nailcones-1.jpeg" class="slide-img" alt="Red Nailcones" loading="lazy"></div><div class="product-info"><p class="product-name">Red Nailcones</p><p class="product-price">₹30</p></div></a>
-            <a class="product-card" href="product.html?id=12" data-category="bridals"><div class="product-image-area"><img src="images/mini-bridal-box.jpeg" class="slide-img" alt="Mini Bridal Box" loading="lazy"></div><div class="product-info"><p class="product-name">Mini Bridal Box</p><p class="product-price">₹390</p></div></a>
-            <a class="product-card" href="product.html?id=13" data-category="bridals"><div class="product-image-area"><img src="images/mega-bridal-box.jpeg" class="slide-img" alt="Mega Bridal Box" loading="lazy"></div><div class="product-info"><p class="product-name">Mega Bridal Box</p><p class="product-price">₹520</p></div></a>
-            <a class="product-card" href="product.html?id=6" data-category="aftercare"><div class="product-image-area"><img src="images/balm-image-1.jpeg" class="slide-img" alt="Aftercare Balm" loading="lazy"></div><div class="product-info"><p class="product-name">Aftercare Balm</p><p class="product-price">₹40</p></div></a>
-            <a class="product-card" href="product.html?id=5" data-category="aftercare"><div class="product-image-area"><img src="images/spray-image-1.jpeg" class="slide-img" alt="Sealant Spray" loading="lazy"></div><div class="product-info"><p class="product-name">Sealant Spray</p><p class="product-price">₹40</p></div></a>
-            <a class="product-card" href="product.html?id=9" data-category="aftercare"><div class="product-image-area"><img src="images/aftercare-oil-1.jpeg" class="slide-img" alt="Aftercare Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Aftercare Oil</p><p class="product-price">₹40</p></div></a>
-            <a class="product-card" href="product.html?id=14" data-category="aftercare"><div class="product-image-area"><img src="images/mefix-tape-1.jpeg" class="slide-img" alt="Mefix Tape" loading="lazy"></div><div class="product-info"><p class="product-name">Mefix Tape</p><p class="product-price">₹45</p></div></a>
-            <a class="product-card" href="product.html?id=15" data-category="henna"><div class="product-image-area"><img src="images/black-henna-cone.jpeg" class="slide-img" alt="Black Henna" loading="lazy"></div><div class="product-info"><p class="product-name">Black Henna</p><p class="product-price">₹45</p></div></a>
-            <a class="product-card" href="product.html?id=10" data-category="practice"><div class="product-image-area"><img src="images/practice-book-1.jpeg" class="slide-img" alt="Reusable Practice Book" loading="lazy"></div><div class="product-info"><p class="product-name">Reusable Practice Book</p><p class="product-price">₹549</p></div></a>
-            <a class="product-card" href="product.html?id=11" data-category="henna"><div class="product-image-area"><img src="images/henna-powder-1.jpeg" class="slide-img" alt="Organic Henna Powder" loading="lazy"></div><div class="product-info"><p class="product-name">Organic Henna Powder</p><p class="product-price">₹190</p></div></a>
-            <a class="product-card" href="product.html?id=16" data-category="aftercare"><div class="product-image-area"><img src="images/tea-tree-oil.jpeg" class="slide-img" alt="Tea Tree Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Tea Tree Oil</p><p class="product-price">₹200</p></div></a>
-            <a class="product-card" href="product.html?id=17" data-category="aftercare"><div class="product-image-area"><img src="images/eucalyptus-oil.jpeg" class="slide-img" alt="Eucalyptus Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Eucalyptus Oil</p><p class="product-price">₹160</p></div></a>
-            <a class="product-card" href="product.html?id=18" data-category="henna"><div class="product-image-area"><img src="images/beginners-eucalyptus-kit.jpeg" class="slide-img" alt="Beginners Eucalyptus Kit" loading="lazy"></div><div class="product-info"><p class="product-name">Beginners Eucalyptus Kit</p><p class="product-price">₹370</p></div></a>
-            <a class="product-card" href="product.html?id=19" data-category="henna"><div class="product-image-area"><img src="images/beginners-teatree-kit.jpeg" class="slide-img" alt="Beginners Tea Tree Kit" loading="lazy"></div><div class="product-info"><p class="product-name">Beginners Tea Tree Kit</p><p class="product-price">₹410</p></div></a>
-            <a class="product-card" href="product.html?id=21" data-category="nail"><div class="product-image-area"><img src="images/diy-nailcone-kit.jpeg" class="slide-img" alt="DIY Nailcone Kit" loading="lazy"></div><div class="product-info"><p class="product-name">DIY Nailcone Kit</p><p class="product-price">₹199</p></div></a>
-            <a class="product-card" href="product.html?id=20" data-category="henna"><div class="product-image-area"><img src="images/henna-paste.jpeg" class="slide-img" alt="Henna Paste" loading="lazy"></div><div class="product-info"><p class="product-name">Henna Paste</p><p class="product-price">₹500</p></div></a>
-            <a class="product-card" href="product.html?id=4" data-category="nail"><div class="product-image-area"><img src="images/liquid-image-1.jpeg" class="slide-img" alt="Nail Liquid" loading="lazy"></div><div class="product-info"><p class="product-name">Nail Liquid</p><p class="product-price">₹60</p></div></a>
-            <a class="product-card" href="product.html?id=2" data-category="hair-oil"><div class="product-image-area"><img src="images/oil-image-1.jpeg" class="slide-img" alt="Herbal Hair Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Herbal Hair Oil</p><p class="product-price">₹100</p></div></a>
-            <a class="product-card" href="product.html?id=3" data-category="henna"><div class="product-image-area"><img src="images/cones-image-1.jpeg" class="slide-img" alt="Empty Cones" loading="lazy"></div><div class="product-info"><p class="product-name">Empty Cones</p><p class="product-price">₹5</p></div></a>
-            <a class="product-card" href="product.html?id=22" data-category="nail"><div class="product-image-area"><img src="images/nail-paste-image.jpeg" class="slide-img" alt="Nail Paste" loading="lazy"></div><div class="product-info"><p class="product-name">Nail Paste</p><p class="product-price">₹350</p></div></a>
+            <a class="product-card" href="product.html?id=8" data-category="henna"><div class="product-image-area"><img src="images/hcones-image-1.jpeg" class="slide-img" alt="Organic Henna Cones" loading="lazy"></div><div class="product-info"><p class="product-name">Organic Henna Cones</p><p class="product-price">Rs. 50</p></div></a>
+            <a class="product-card" href="product.html?id=7" data-category="henna"><div class="product-image-area"><img src="images/red-nailcones-1.jpeg" class="slide-img" alt="Red Nailcones" loading="lazy"></div><div class="product-info"><p class="product-name">Red Nailcones</p><p class="product-price">Rs. 30</p></div></a>
+            <a class="product-card" href="product.html?id=12" data-category="bridals"><div class="product-image-area"><img src="images/mini-bridal-box.jpeg" class="slide-img" alt="Mini Bridal Box" loading="lazy"></div><div class="product-info"><p class="product-name">Mini Bridal Box</p><p class="product-price">Rs. 390</p></div></a>
+            <a class="product-card" href="product.html?id=13" data-category="bridals"><div class="product-image-area"><img src="images/mega-bridal-box.jpeg" class="slide-img" alt="Mega Bridal Box" loading="lazy"></div><div class="product-info"><p class="product-name">Mega Bridal Box</p><p class="product-price">Rs. 520</p></div></a>
+            <a class="product-card" href="product.html?id=6" data-category="aftercare"><div class="product-image-area"><img src="images/balm-image-1.jpeg" class="slide-img" alt="Aftercare Balm" loading="lazy"></div><div class="product-info"><p class="product-name">Aftercare Balm</p><p class="product-price">Rs. 40</p></div></a>
+            <a class="product-card" href="product.html?id=5" data-category="aftercare"><div class="product-image-area"><img src="images/spray-image-1.jpeg" class="slide-img" alt="Sealant Spray" loading="lazy"></div><div class="product-info"><p class="product-name">Sealant Spray</p><p class="product-price">Rs. 40</p></div></a>
+            <a class="product-card" href="product.html?id=9" data-category="aftercare"><div class="product-image-area"><img src="images/aftercare-oil-1.jpeg" class="slide-img" alt="Aftercare Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Aftercare Oil</p><p class="product-price">Rs. 40</p></div></a>
+            <a class="product-card" href="product.html?id=14" data-category="aftercare"><div class="product-image-area"><img src="images/mefix-tape-1.jpeg" class="slide-img" alt="Mefix Tape" loading="lazy"></div><div class="product-info"><p class="product-name">Mefix Tape</p><p class="product-price">Rs. 45</p></div></a>
+            <a class="product-card" href="product.html?id=15" data-category="henna"><div class="product-image-area"><img src="images/black-henna-cone.jpeg" class="slide-img" alt="Black Henna" loading="lazy"></div><div class="product-info"><p class="product-name">Black Henna</p><p class="product-price">Rs. 45</p></div></a>
+            <a class="product-card" href="product.html?id=10" data-category="practice"><div class="product-image-area"><img src="images/practice-book-1.jpeg" class="slide-img" alt="Reusable Practice Book" loading="lazy"></div><div class="product-info"><p class="product-name">Reusable Practice Book</p><p class="product-price">Rs. 549</p></div></a>
+            <a class="product-card" href="product.html?id=11" data-category="henna"><div class="product-image-area"><img src="images/henna-powder-1.jpeg" class="slide-img" alt="Organic Henna Powder" loading="lazy"></div><div class="product-info"><p class="product-name">Organic Henna Powder</p><p class="product-price">Rs. 160</p></div></a>
+            <a class="product-card" href="product.html?id=16" data-category="aftercare"><div class="product-image-area"><img src="images/tea-tree-oil.jpeg" class="slide-img" alt="Tea Tree Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Tea Tree Oil</p><p class="product-price">Rs. 200</p></div></a>
+            <a class="product-card" href="product.html?id=17" data-category="aftercare"><div class="product-image-area"><img src="images/eucalyptus-oil.jpeg" class="slide-img" alt="Eucalyptus Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Eucalyptus Oil</p><p class="product-price">Rs. 130</p></div></a>
+            <a class="product-card" href="product.html?id=18" data-category="henna"><div class="product-image-area"><img src="images/beginners-eucalyptus-kit.jpeg" class="slide-img" alt="Beginners Eucalyptus Kit" loading="lazy"></div><div class="product-info"><p class="product-name">Beginners Eucalyptus Kit</p><p class="product-price">Rs. 320</p></div></a>
+            <a class="product-card" href="product.html?id=19" data-category="henna"><div class="product-image-area"><img src="images/beginners-teatree-kit.jpeg" class="slide-img" alt="Beginners Tea Tree Kit" loading="lazy"></div><div class="product-info"><p class="product-name">Beginners Tea Tree Kit</p><p class="product-price">Rs. 399</p></div></a>
+            <a class="product-card" href="product.html?id=21" data-category="nail"><div class="product-image-area"><img src="images/diy-nailcone-kit.jpeg" class="slide-img" alt="DIY Nailcone Kit" loading="lazy"></div><div class="product-info"><p class="product-name">DIY Nailcone Kit</p><p class="product-price">Rs. 199</p></div></a>
+            <a class="product-card" href="product.html?id=20" data-category="henna"><div class="product-image-area"><img src="images/henna-paste.jpeg" class="slide-img" alt="Henna Paste" loading="lazy"></div><div class="product-info"><p class="product-name">Henna Paste</p><p class="product-price">Rs. 500</p></div></a>
+            <a class="product-card" href="product.html?id=4" data-category="nail"><div class="product-image-area"><img src="images/liquid-image-1.jpeg" class="slide-img" alt="Nail Liquid" loading="lazy"></div><div class="product-info"><p class="product-name">Nail Liquid</p><p class="product-price">Rs. 60</p></div></a>
+            <a class="product-card" href="product.html?id=2" data-category="hair-oil"><div class="product-image-area"><img src="images/oil-image-1.jpeg" class="slide-img" alt="Herbal Hair Oil" loading="lazy"></div><div class="product-info"><p class="product-name">Herbal Hair Oil</p><p class="product-price">Rs. 100</p></div></a>
+            <a class="product-card" href="product.html?id=3" data-category="henna"><div class="product-image-area"><img src="images/cones-image-1.jpeg" class="slide-img" alt="Empty Cones" loading="lazy"></div><div class="product-info"><p class="product-name">Empty Cones</p><p class="product-price">Rs. 5</p></div></a>
+            <a class="product-card" href="product.html?id=22" data-category="nail"><div class="product-image-area"><img src="images/nail-paste-image.jpeg" class="slide-img" alt="Nail Paste" loading="lazy"></div><div class="product-info"><p class="product-name">Nail Paste</p><p class="product-price">Rs. 350</p></div></a>
         </div>
     </main>
 
+    <!-- CONFETTI CANVAS -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- 5 YEARS OF STAINYCONES GIFT BOX MODAL (ONE PER DEVICE) -->
+    <div id="gift-modal" class="gift-modal-overlay" onclick="handleOverlayClick(event)">
+        <div class="gift-modal-card">
+            <button type="button" class="modal-close-btn" onclick="closeGiftBoxModal()">Close</button>
+
+            <span class="anniversary-eyebrow">Anniversary Edition</span>
+            <h2 class="anniversary-heading">5 Years of StainyCones</h2>
+            <p class="anniversary-sub">One Gift Box Per Device</p>
+
+            <div class="gift-stage">
+                <!-- Physical CSS Gift Box -->
+                <div id="gift-box" class="physical-gift-box" onclick="triggerGiftOpen()">
+                    <div class="box-bow">
+                        <div class="box-bow-knot"></div>
+                    </div>
+                    <div class="box-lid"></div>
+                    <div class="box-body">
+                        <div class="box-label-plate">
+                            <span class="box-plate-sub">StainyCones</span>
+                            <span class="box-plate-title">Gift Box</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text-Only Revealed Prize Card -->
+                <div id="prize-reveal" class="prize-reveal-card">
+                    <span id="prize-tag" class="prize-tag">Anniversary Reward</span>
+                    <div id="prize-title" class="prize-title">30% Off</div>
+                    <p id="prize-subtext" class="prize-subtext">Claim your reward by placing an order on our website.</p>
+                </div>
+            </div>
+
+            <button id="gift-action-btn" class="gift-cta-btn" onclick="triggerGiftOpen()">
+                Open Gift Box
+            </button>
+            <p id="gift-hint" class="tap-hint">Select the gift box above to reveal your reward</p>
+        </div>
+    </div>
+
     <script>
+        const DEVICE_GIFT_KEY = 'stainyConesDeviceGift_v1';
+
+        const PRIZE_POOL = [
+            { name: "30% Off", type: "discount", value: 30 },
+            { name: "Free Sample Kit", type: "gift", value: 0 },
+            { name: "Free Henna Cone", type: "gift", value: 0 },
+            { name: "Free Nailcone", type: "gift", value: 0 },
+            { name: "15% Off", type: "discount", value: 15 },
+            { name: "Free Stencils", type: "gift", value: 0 },
+            { name: "10% Off", type: "discount", value: 10 }
+        ];
+
+        let isBoxOpening = false;
+        let deviceOutcome = null;
+
         function initPage() {
             updateCartCount();
             updateProductCount();
+            syncHeaderGiftState();
         }
 
         function updateCartCount() {
@@ -262,23 +981,464 @@
         }
 
         function filterProducts(category) {
-            // Update active tab
             document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
             const activeEl = document.getElementById(`cat-${category}`);
             if (activeEl) activeEl.classList.add('active');
 
-            // Show/hide cards
             const cards = document.querySelectorAll('.product-card');
             let shown = 0;
             cards.forEach(card => {
                 const match = category === 'all' || card.dataset.category === category;
-                card.style.display = match ? 'block' : 'none';
+                card.style.display = match ? 'flex' : 'none';
                 if (match) shown++;
             });
 
-            // Update count
             document.getElementById('product-count').innerText = `${shown} items`;
         }
+
+        /* ==========================================
+           ONE GIFT BOX PER DEVICE SYSTEM
+        ========================================== */
+        function getDeviceGiftData() {
+            const raw = localStorage.getItem(DEVICE_GIFT_KEY);
+            if (!raw) return null;
+            try {
+                return JSON.parse(raw);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function syncHeaderGiftState() {
+            const saved = getDeviceGiftData();
+            const dot = document.getElementById('gift-status-dot');
+            const btnText = document.getElementById('gift-header-btn-text');
+            const rewardBar = document.getElementById('active-reward-bar');
+            const rewardName = document.getElementById('active-reward-name');
+
+            if (!saved) {
+                if (dot) dot.classList.remove('opened');
+                if (btnText) btnText.innerText = "5 Years Gift Box";
+                rewardBar.classList.remove('show');
+                return;
+            }
+
+            deviceOutcome = saved;
+            if (dot) dot.classList.add('opened');
+
+            if (saved.won) {
+                if (saved.orderCompleted) {
+                    if (btnText) btnText.innerText = `Reward Redeemed (${saved.name})`;
+                    rewardBar.classList.remove('show');
+                } else if (saved.claimed) {
+                    if (btnText) btnText.innerText = `Active Gift: ${saved.name}`;
+                    rewardName.innerText = saved.name;
+                    rewardBar.classList.add('show');
+                } else {
+                    if (btnText) btnText.innerText = `Unclaimed Gift: ${saved.name}`;
+                    rewardBar.classList.remove('show');
+                }
+            } else {
+                if (btnText) btnText.innerText = "5 Years Gift Box (Opened)";
+                rewardBar.classList.remove('show');
+            }
+        }
+
+        function rollDeviceGiftOutcome() {
+            const existing = getDeviceGiftData();
+            if (existing) return existing;
+
+            // 70% win probability out of 100%
+            const roll = Math.random() * 100;
+            let outcome;
+
+            if (roll < 70) {
+                const randomIndex = Math.floor(Math.random() * PRIZE_POOL.length);
+                const prize = PRIZE_POOL[randomIndex];
+                outcome = {
+                    opened: true,
+                    won: true,
+                    claimed: false,
+                    orderCompleted: false,
+                    name: prize.name,
+                    type: prize.type,
+                    value: prize.value,
+                    timestamp: Date.now()
+                };
+            } else {
+                outcome = {
+                    opened: true,
+                    won: false,
+                    claimed: false,
+                    orderCompleted: false,
+                    name: "No Complimentary Gift",
+                    type: "none",
+                    value: 0,
+                    timestamp: Date.now()
+                };
+            }
+
+            localStorage.setItem(DEVICE_GIFT_KEY, JSON.stringify(outcome));
+            return outcome;
+        }
+
+        function openGiftBoxModal() {
+            const modal = document.getElementById('gift-modal');
+            modal.classList.add('active');
+            playModalOpenSFX();
+
+            const existing = getDeviceGiftData();
+            if (existing) {
+                deviceOutcome = existing;
+                displayFinalPrizeState(existing, false);
+            }
+        }
+
+        function closeGiftBoxModal() {
+            if (isBoxOpening) return;
+            document.getElementById('gift-modal').classList.remove('active');
+        }
+
+        function handleOverlayClick(event) {
+            if (event.target.id === 'gift-modal') {
+                closeGiftBoxModal();
+            }
+        }
+
+        function triggerGiftOpen() {
+            if (isBoxOpening) return;
+
+            // If box was already opened on this device, handle CTA click
+            if (deviceOutcome) {
+                if (deviceOutcome.won && !deviceOutcome.orderCompleted) {
+                    claimGiftAndShop();
+                } else {
+                    closeGiftBoxModal();
+                }
+                return;
+            }
+
+            isBoxOpening = true;
+            const giftBox = document.getElementById('gift-box');
+            const actionBtn = document.getElementById('gift-action-btn');
+            const hint = document.getElementById('gift-hint');
+
+            actionBtn.disabled = true;
+            actionBtn.innerText = "Opening Gift Box...";
+            hint.innerText = "Checking your anniversary reward...";
+
+            giftBox.classList.add('shaking');
+            playUnsealBuildUpSFX();
+
+            deviceOutcome = rollDeviceGiftOutcome();
+
+            setTimeout(() => {
+                giftBox.classList.remove('shaking');
+                isBoxOpening = false;
+                displayFinalPrizeState(deviceOutcome, true);
+                syncHeaderGiftState();
+            }, 1250);
+        }
+
+        function displayFinalPrizeState(outcome, playEffects) {
+            const giftBox = document.getElementById('gift-box');
+            const prizeReveal = document.getElementById('prize-reveal');
+            const prizeTag = document.getElementById('prize-tag');
+            const prizeTitle = document.getElementById('prize-title');
+            const prizeSubtext = document.getElementById('prize-subtext');
+            const actionBtn = document.getElementById('gift-action-btn');
+            const hint = document.getElementById('gift-hint');
+
+            giftBox.classList.add('opened');
+            prizeReveal.classList.add('show');
+
+            if (outcome.won) {
+                prizeTag.innerText = outcome.orderCompleted ? "Reward Redeemed" : "Congratulations — You Won";
+                prizeTitle.innerText = outcome.name;
+
+                if (outcome.orderCompleted) {
+                    prizeSubtext.innerText = "This reward has already been claimed and used on an order from this device.";
+                    actionBtn.className = "gift-cta-btn";
+                    actionBtn.innerText = "Continue Browsing";
+                    hint.innerText = "Limit: One gift box per device.";
+                } else {
+                    prizeSubtext.innerText = "Your reward is linked to this device and will automatically apply at checkout.";
+                    actionBtn.className = "gift-cta-btn claim-btn";
+                    actionBtn.innerText = "Claim via Ordering from Website";
+                    hint.innerText = "Add products to your bag and place your order to receive this gift.";
+                }
+
+                if (playEffects) {
+                    playWinChimeSFX();
+                    launchConfetti();
+                }
+            } else {
+                prizeTag.innerText = "5 Years of StainyCones";
+                prizeTitle.innerText = "Thank You";
+                prizeSubtext.innerText = "No complimentary gift was unlocked on this device. Thank you for celebrating 5 years with us.";
+                actionBtn.className = "gift-cta-btn";
+                actionBtn.innerText = "Continue Shopping";
+                hint.innerText = "Limit: One gift box per device.";
+
+                if (playEffects) {
+                    playNeutralChimeSFX();
+                }
+            }
+
+            actionBtn.disabled = false;
+        }
+
+        function claimGiftAndShop() {
+            if (!deviceOutcome || !deviceOutcome.won) return;
+            deviceOutcome.claimed = true;
+            localStorage.setItem(DEVICE_GIFT_KEY, JSON.stringify(deviceOutcome));
+            syncHeaderGiftState();
+            closeGiftBoxModal();
+            showToast(`Reward "${deviceOutcome.name}" activated for your order`);
+            document.getElementById('catalog-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        let toastTimer;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+        }
+
+        /* ==========================================
+           WEB AUDIO SYNTHESIZER (SFX)
+        ========================================== */
+        let audioCtx = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) audioCtx = new AudioContextClass();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playTone(freq, type, duration, startTimeOffset = 0, peakGain = 0.15) {
+            const ctx = getAudioContext();
+            if (!ctx) return;
+
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, ctx.currentTime + startTimeOffset);
+
+            gain.gain.setValueAtTime(0.001, ctx.currentTime + startTimeOffset);
+            gain.gain.exponentialRampToValueAtTime(peakGain, ctx.currentTime + startTimeOffset + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + startTimeOffset + duration);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start(ctx.currentTime + startTimeOffset);
+            osc.stop(ctx.currentTime + startTimeOffset + duration);
+        }
+
+        function playModalOpenSFX() {
+            playTone(320, 'sine', 0.12, 0, 0.1);
+            playTone(480, 'sine', 0.18, 0.05, 0.12);
+        }
+
+        function playUnsealBuildUpSFX() {
+            const steps = 14;
+            for (let i = 0; i < steps; i++) {
+                playTone(200 + (i * 25), 'triangle', 0.06, i * 0.085, 0.12);
+            }
+        }
+
+        function playWinChimeSFX() {
+            const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+            notes.forEach((freq, idx) => {
+                playTone(freq, 'triangle', 0.45, idx * 0.08, 0.18);
+            });
+            setTimeout(() => {
+                playTone(1567.98, 'sine', 0.6, 0, 0.12);
+                playTone(2093.00, 'sine', 0.8, 0.1, 0.12);
+            }, 350);
+        }
+
+        function playNeutralChimeSFX() {
+            playTone(440, 'sine', 0.28, 0, 0.12);
+            playTone(392, 'sine', 0.4, 0.18, 0.12);
+        }
+
+        /* ==========================================
+           CONFETTI ENGINE
+        ========================================== */
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const colors = ['#9A7B3E', '#E6D8B8', '#111827', '#059669', '#D97706'];
+            const pieces = [];
+
+            for (let i = 0; i < 90; i++) {
+                pieces.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 16,
+                    vy: (Math.random() - 1) * 15 - 3,
+                    size: Math.random() * 7 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * 10,
+                    gravity: 0.35,
+                    opacity: 1
+                });
+            }
+
+            function updateConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let active = 0;
+
+                pieces.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += p.gravity;
+                    p.rotation += p.rotationSpeed;
+                    p.opacity -= 0.008;
+
+                    if (p.opacity > 0 && p.y < canvas.height + 20) {
+                        active++;
+                        ctx.save();
+                        ctx.globalAlpha = Math.max(0, p.opacity);
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate((p.rotation * Math.PI) / 180);
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+                        ctx.restore();
+                    }
+                });
+
+                if (active > 0) {
+                    requestAnimationFrame(updateConfetti);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }
+            }
+
+            updateConfetti();
+        }
     </script>
+
+    <!-- GLITTER EFFECT START (delete this whole block to remove the falling glitter) -->
+    <script>
+    (function () {
+        var GLITTER_ENABLED = true; /* set to false to switch the glitter off */
+        if (!GLITTER_ENABLED) return;
+
+        function startGlitter() {
+            var canvas = document.createElement('canvas');
+            canvas.id = 'glitter-canvas';
+            canvas.setAttribute('aria-hidden', 'true');
+            canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2000;';
+            document.documentElement.appendChild(canvas);
+
+            var ctx = canvas.getContext('2d');
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var W = window.innerWidth, H = window.innerHeight, parts = [];
+
+            var GOLD = ['#D4AF37', '#C9A24B', '#E0BD5A', '#B8893A', '#E6C86E'];
+            var CREAM = ['#FFF4D6', '#F6E7C1', '#FFFAEB', '#F3E2B8'];
+
+            function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+
+            function make(initial) {
+                var cream = Math.random() < 0.42;
+                return {
+                    x: Math.random() * W,
+                    y: initial ? Math.random() * H : -14 - Math.random() * 60,
+                    size: Math.random() * 2.4 + 1.3,
+                    speed: Math.random() * 0.65 + 0.35,
+                    sway: Math.random() * 0.7 + 0.2,
+                    phase: Math.random() * Math.PI * 2,
+                    twinkle: Math.random() * 0.04 + 0.015,
+                    tphase: Math.random() * Math.PI * 2,
+                    color: cream ? pick(CREAM) : pick(GOLD),
+                    cream: cream,
+                    star: Math.random() < 0.35
+                };
+            }
+
+            function resize() {
+                W = window.innerWidth;
+                H = window.innerHeight;
+                canvas.width = Math.round(W * dpr);
+                canvas.height = Math.round(H * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                var target = Math.round(Math.min(110, Math.max(36, W / 14)));
+                while (parts.length < target) parts.push(make(true));
+                if (parts.length > target) parts.length = target;
+            }
+
+            function drawStar(x, y, r) {
+                ctx.beginPath();
+                ctx.moveTo(x, y - r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.quadraticCurveTo(x, y, x, y + r);
+                ctx.quadraticCurveTo(x, y, x - r, y);
+                ctx.quadraticCurveTo(x, y, x, y - r);
+                ctx.closePath();
+            }
+
+            function frame() {
+                ctx.clearRect(0, 0, W, H);
+                for (var i = 0; i < parts.length; i++) {
+                    var p = parts[i];
+                    p.y += p.speed;
+                    p.phase += 0.02;
+                    p.tphase += p.twinkle;
+                    p.x += Math.sin(p.phase) * p.sway * 0.5;
+
+                    if (p.y > H + 14) { parts[i] = make(false); continue; }
+                    if (p.x < -10) p.x = W + 10;
+                    if (p.x > W + 10) p.x = -10;
+
+                    var alpha = 0.3 + 0.7 * Math.abs(Math.sin(p.tphase));
+                    ctx.globalAlpha = alpha;
+                    ctx.fillStyle = p.color;
+
+                    if (p.star) {
+                        drawStar(p.x, p.y, p.size * 2.2);
+                    } else {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size * 0.8, 0, Math.PI * 2);
+                    }
+                    ctx.fill();
+
+                    if (p.cream) {
+                        ctx.lineWidth = 0.6;
+                        ctx.strokeStyle = 'rgba(184, 137, 58, 0.6)';
+                        ctx.stroke();
+                    }
+                }
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(frame);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            requestAnimationFrame(frame);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startGlitter);
+        } else {
+            startGlitter();
+        }
+    })();
+    </script>
+    <!-- GLITTER EFFECT END -->
 </body>
 </html>

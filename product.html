@@ -4,92 +4,274 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details - StainyCones</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --color-black: #111111;
-            --color-white: #FFFFFF;
-            --color-light-grey: #F5F5F5;
-            --color-dark-grey: #333333;
-            --color-brown: #4F352A;
-            --color-whatsapp: #25D366;
-            --color-accent: #f9f9f9;
+            --color-primary: #111827;
+            --color-primary-hover: #1F2937;
+            --color-accent: #9A7B3E;
+            --color-bg: #F9FAFB;
+            --color-surface: #FFFFFF;
+            --color-text: #111827;
+            --color-text-muted: #6B7280;
+            --color-border: #E5E7EB;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: #fbfbfb; /* Clean, fast-loading background */
-            color: var(--color-black); 
-            line-height: 1.6; 
+            font-family: var(--font-main); 
+            background-color: var(--color-bg);
+            color: var(--color-text); 
+            line-height: 1.5; 
             -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
 
-        .header { background-color: rgba(255, 255, 255, 0.95); padding: 15px 0; border-bottom: 1px solid var(--color-light-grey); display: flex; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-        .back-link { color: var(--color-black); text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; margin-right: 20px; font-weight: 600; transition: color 0.3s ease; }
-        .back-link:hover { color: var(--color-dark-grey); }
-        .cart-link { text-decoration: none; color: var(--color-black); position: relative; margin-left: auto; display: flex; align-items: center; transition: transform 0.3s ease; }
-        .cart-link:hover { transform: scale(1.05); }
-        .cart-logo { width: 32px; height: 32px; }
-        .cart-count { position: absolute; top: -6px; right: -8px; background: var(--color-whatsapp); color: var(--color-white); font-size: 0.75rem; padding: 2px 6px; border-radius: 50%; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+        .header {
+            background-color: rgba(255, 255, 255, 0.96);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .back-link {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .back-link:hover { color: var(--color-primary); }
+        .cart-link {
+            text-decoration: none;
+            color: var(--color-primary);
+            position: relative;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            padding: 6px;
+            border-radius: 6px;
+            transition: background 0.2s ease;
+        }
+        .cart-link:hover { background: var(--color-bg); }
+        .cart-logo { width: 28px; height: 28px; border-radius: 4px; }
+        .cart-count {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background: var(--color-primary);
+            color: var(--color-surface);
+            font-size: 0.68rem;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            border-radius: 9px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .product-page { display: flex; gap: 50px; margin-top: 20px; background: var(--color-white); padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
+        .product-page {
+            display: flex;
+            gap: 48px;
+            margin-top: 16px;
+            background: var(--color-surface);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
         .product-gallery { flex: 1; max-width: 50%; }
-        .main-image-container { width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 12px; background: var(--color-light-grey); position: relative; }
-        .main-image { width: 100%; height: 100%; object-fit: cover; image-orientation: from-image; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .main-image-container:hover .main-image { transform: scale(1.06); }
+        .main-image-container {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #F3F4F6;
+            position: relative;
+            border: 1px solid var(--color-border);
+        }
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-orientation: from-image;
+            transition: transform 0.4s ease;
+        }
+        .main-image-container:hover .main-image { transform: scale(1.04); }
 
-        .thumbnail-container { display: flex; gap: 15px; margin-top: 15px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
+        .thumbnail-container {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            scrollbar-width: none;
+        }
         .thumbnail-container::-webkit-scrollbar { display: none; }
-        .thumbnail { width: 75px; height: 75px; object-fit: cover; image-orientation: from-image; cursor: pointer; border: 2px solid transparent; border-radius: 8px; transition: all 0.3s ease; opacity: 0.6; }
-        .thumbnail:hover { opacity: 1; transform: translateY(-2px); }
-        .thumbnail.active { border-color: var(--color-black); opacity: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .thumbnail {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            image-orientation: from-image;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            opacity: 0.6;
+        }
+        .thumbnail:hover { opacity: 0.9; }
+        .thumbnail.active {
+            border-color: var(--color-primary);
+            opacity: 1;
+        }
 
         .product-details { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        .product-name { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; line-height: 1.2; letter-spacing: -0.5px; }
-        .product-price { font-size: 1.8rem; color: var(--color-black); font-weight: 700; margin-bottom: 30px; display: flex; align-items: center; }
+        .product-name {
+            font-size: 1.85rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            letter-spacing: -0.4px;
+            color: var(--color-primary);
+        }
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+        }
         
-        .variants-section, .quantity-section { margin-bottom: 25px; }
-        .variants-section h3, .quantity-section h3 { font-size: 0.85rem; text-transform: uppercase; margin-bottom: 12px; color: var(--color-dark-grey); letter-spacing: 1px; font-weight: 700; }
-        .variant-options { display: flex; flex-wrap: wrap; gap: 12px; }
-        .variant-btn { padding: 12px 20px; border: 1px solid #e0e0e0; background: var(--color-white); cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 600; border-radius: 8px; transition: all 0.3s ease; }
-        .variant-btn:hover { border-color: var(--color-black); background: var(--color-accent); }
-        .variant-btn.selected { background: var(--color-black); color: var(--color-white); border-color: var(--color-black); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .variants-section, .quantity-section { margin-bottom: 24px; }
+        .variants-section h3, .quantity-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: var(--color-text-muted);
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .variant-options { display: flex; flex-wrap: wrap; gap: 10px; }
+        .variant-btn {
+            padding: 10px 18px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-size: 0.82rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            color: var(--color-text);
+        }
+        .variant-btn:hover { border-color: var(--color-primary); }
+        .variant-btn.selected {
+            background: var(--color-primary);
+            color: var(--color-surface);
+            border-color: var(--color-primary);
+        }
 
-        .quantity-control { display: flex; align-items: center; border: 1px solid #e0e0e0; width: fit-content; border-radius: 8px; background: var(--color-white); overflow: hidden; }
-        .quantity-btn { padding: 12px 20px; border: none; background: transparent; cursor: pointer; font-size: 1.2rem; transition: background 0.2s; color: var(--color-dark-grey); }
-        .quantity-btn:hover { background: var(--color-accent); color: var(--color-black); }
-        .quantity-display { width: 40px; text-align: center; font-weight: 700; font-size: 1rem; }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--color-border);
+            width: fit-content;
+            border-radius: 6px;
+            background: var(--color-surface);
+            overflow: hidden;
+        }
+        .quantity-btn {
+            padding: 10px 18px;
+            border: none;
+            background: var(--color-bg);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.2s;
+            color: var(--color-primary);
+        }
+        .quantity-btn:hover { background: var(--color-border); }
+        .quantity-display { width: 44px; text-align: center; font-weight: 600; font-size: 0.92rem; }
 
-        .add-to-cart-btn { width: 100%; padding: 18px; background: var(--color-black); color: var(--color-white); border: none; font-weight: 700; font-size: 1.05rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 8px; transition: all 0.3s ease; box-shadow: 0 6px 15px rgba(0,0,0,0.15); margin-top: 10px; }
-        .add-to-cart-btn:hover { background: #222; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
-        .add-to-cart-btn:active { transform: translateY(0); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--color-primary);
+            color: var(--color-surface);
+            border: none;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+        .add-to-cart-btn:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        .add-to-cart-btn:active { transform: translateY(0); }
 
-        .description-section { margin-top: 40px; border-top: 1px solid #f0f0f0; padding-top: 25px; }
-        .description-section h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-black); margin-bottom: 15px; font-weight: 700; }
-        .description-text { font-size: 0.95rem; color: #555; white-space: pre-line; line-height: 1.8; }
+        .description-section {
+            margin-top: 32px;
+            border-top: 1px solid var(--color-border);
+            padding-top: 24px;
+        }
+        .description-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-muted);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .description-text {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            white-space: pre-line;
+            line-height: 1.7;
+        }
 
         /* TOAST NOTIFICATION */
         .toast {
             position: fixed;
-            bottom: 30px;
+            bottom: 28px;
             left: 50%;
             transform: translateX(-50%) translateY(20px);
-            background: var(--color-black);
-            color: var(--color-white);
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            background: var(--color-primary);
+            color: var(--color-surface);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.35s ease, transform 0.35s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
             z-index: 9999;
             white-space: nowrap;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-lg);
         }
         .toast.show {
             opacity: 1;
@@ -97,21 +279,40 @@
         }
 
         @media (max-width: 900px) { 
-            .product-page { flex-direction: column; padding: 25px; gap: 30px; margin-top: 10px; } 
+            .product-page { flex-direction: column; padding: 24px; gap: 28px; } 
             .product-gallery { max-width: 100%; } 
-            .product-name { font-size: 1.8rem; }
-            .product-price { font-size: 1.5rem; margin-bottom: 20px; }
+            .product-name { font-size: 1.5rem; }
+            .product-price { font-size: 1.35rem; margin-bottom: 20px; }
         }
+
+        /* ====================================================
+           AESTHETIC REFINEMENTS
+        ==================================================== */
+        :root {
+            --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+            --gold-deep: #8A6A2B;
+            --gold-mid: #C9A24B;
+            --gold-soft: #E6D8B8;
+            --ivory: #FBF9F5;
+        }
+        body { background-color: var(--ivory); }
+        .header { border-bottom-color: #EFE7D3; }
+        ::selection { background: var(--gold-soft); color: var(--color-primary); }
+
+        .product-name { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.3px; }
+        .product-price { color: var(--gold-deep); }
+        .variants-section h3, .product-details h3, .description-section h3 { letter-spacing: 1.5px; }
+        .main-image-container, .thumbnail { border-color: #EFE7D3; }
     </style>
 </head>
 <body onload="initializeProduct()">
     <div class="toast" id="toast"></div>
 
     <header class="header">
-        <div class="container" style="display: flex; width: 100%; align-items: center;">
-            <a href="index.html" class="back-link">← Back to Products</a>
+        <div class="container" style="display: flex; width: 100%; align-items: center; padding-top: 0; padding-bottom: 0;">
+            <a href="index.html" class="back-link">Back to Products</a>
             <a href="cart.html" class="cart-link">
-                <img src="images/cart-icon.jpeg" class="cart-logo">
+                <img src="images/cart-icon.jpeg" class="cart-logo" alt="Cart">
                 <span class="cart-count" id="cart-count">0</span>
             </a>
         </div>
@@ -121,14 +322,14 @@
         <div class="product-page">
             <div class="product-gallery">
                 <div class="main-image-container">
-                    <img id="main-product-image" src="" class="main-image">
+                    <img id="main-product-image" src="" class="main-image" alt="Product">
                 </div>
                 <div class="thumbnail-container" id="thumbnail-container"></div>
             </div>
             
             <div class="product-details">
                 <h1 class="product-name" id="product-name">Loading...</h1>
-                <p class="product-price" id="product-price">₹0</p>
+                <p class="product-price" id="product-price">Rs. 0</p>
 
                 <div class="variants-section" id="variants-section">
                     <h3>Select Option</h3>
@@ -138,13 +339,13 @@
                 <div class="quantity-section">
                     <h3>Quantity</h3>
                     <div class="quantity-control">
-                        <button class="quantity-btn" onclick="updateQuantity(-1)">−</button>
+                        <button class="quantity-btn" onclick="updateQuantity(-1)">-</button>
                         <span class="quantity-display" id="product-quantity">1</span>
                         <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
                     </div>
                 </div>
                 
-                <button class="add-to-cart-btn" onclick="addToCart()">Add to bag</button>
+                <button class="add-to-cart-btn" onclick="addToCart()">Add to Bag</button>
 
                 <div class="description-section">
                     <h3>Description</h3>
@@ -156,27 +357,27 @@
 
     <script>
        const productsData = [
-            { id: 8, name: "ORGANIC HENNA CONES", description: "Finely strained, organic henna cones for smooth, dark staining results.WEIGHT:24g.STORAGE:6 months in freezer. ", variants: {"Per cone": 50, "30 pieces": 1050, "100 pieces": 3000}, images: ["images/hcones-image-1.jpeg", "images/hcones-image-2.jpeg","images/hcones-image-3.jpeg"] },
-            { id: 7, name: "RED NAILCONES", description: "Ready-to-use red nail cones for immediate nail color application.WEIGHT:15g.STORAGE:1 Year in freezer.", variants: {"Per cone": 30, "30 pieces": 600, "100 pieces": 1850}, images: ["images/red-nailcones-1.jpeg","images/red-nailcones-2.jpeg","images/red-nailcones-3.jpeg"] },
-            { id: 12, name: "MINI BRIDAL BOX", description: "Includes: 4 Organic Henna Cones, 3 Red Nailcones, Aftercare Oil, Aftercare Balm, Sealant Spray.Best for semi bridals.",variants: {"per box":390} ,images: ["images/mini-bridal-box.jpeg"]   },
-            { id: 13, name: "MEGA BRIDAL BOX", description: "Includes: 6 organic henna cones, 4 Red nailcones, Aftercare OIl,Aftercare Balm,Sealant spray.", variants: {"One Box": 520}, images: ["images/mega-bridal-box.jpeg"] },
-            { id: 6, name: "AFTERCARE BALM", description: "Aftercare balm to protect and enhance henna stain darkness.Use right after henna removal.SOTARAGE: 2 year in room temperature", variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500}, images: ["images/balm-image-1.jpeg", "images/balm-image-2.jpeg"] },
-            { id: 5, name: "SEALANT SPRAY", description: "Henna sealant spray to help seal and darken your henna stain.Use right after the henna design dries.STORAGE: 6 months in freezer.", variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500}, images: ["images/spray-image-1.jpeg"] },
-            { id: 9, name: "AFTERCARE OIL", description: "Can be stored upto 2 years in room temperature. Use to remove dried henna and darken stains.", variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500}, images: ["images/aftercare-oil-1.jpeg", "images/aftercare-oil-2.jpeg"] },
-            { id: 14, name: "MEFIX TAPE", description: "Medical-grade Mefix tape to securely wrap and protect fresh henna.LENGTH:15cm.BREADTH:10cm.Use over dried henna.", variants: {"15cm": 45, "1m": 250}, images: ["images/mefix-tape-1.jpeg", "images/mefix-tape-2.jpeg"] },
-            { id: 15, name: "BLACK HENNA", description: "Natural black henna product for  black stains.NET WEIGHT:10g.", variants: {"Per piece": 45,  images: ["images/black-henna-cone.jpeg","images/black-henna-2.jpeg"] }},
-            { id: 10, name: "REUSABLE PRACTICE BOOK", description: "A durable, reusable practice book for perfecting designs.",variants: {"Per book": 549},  images: ["images/practice-book-1.jpeg", "images/practice-book-2.jpeg","images/practice-book-3.jpeg","images/practice-book-4.jpeg"] },
-            { id: 11, name: "ORGANIC HENNA POWDER", description: "5 times sifted,Super stringy Premium quality[Fresh crop],BAQ[Body Art Quality]Rajasthani Henna Powder.STORAGE:2 years in room temperature.", variants: {"100g": 190, "500g": 380, "1kg": 699}, images: ["images/henna-powder-1.jpeg"] },
-            { id: 16, name: "TEA TREE OIL", description: "100% pure Tea Tree essential oil for henna mixing.STORAGE:2 years in room temperature.", variants: {"30ml": 200, "100ml": 560, "500ml": 1850, "1L": 3499}, images: ["images/tea-tree-oil.jpeg"] },
-            { id: 17, name: "EUCALYPTUS OIL", description: "100% pure Eucalyptus Globulus essential oil.STORAGE: 2 years in room temperature.", variants: {"30ml": 160, "100ml": 420, "500ml": 1460, "1L": 2110}, images: ["images/eucalyptus-oil.jpeg"] },
-            { id: 18, name: "BEGINNERS EUCALYPTUS KIT", description: "Contains: 100g Henna powder,30ml Eucalyptus oil, piping bag,Cellophane sheet and Recipe card.", variants: {"100g Kit": 370, "500g Kit": 1100, "1kg Kit": 1999}, images: ["images/beginners-eucalyptus-kit.jpeg"] },
-            { id: 19, name: "BEGINNERS TEA TREE KIT", description: "Contains: 100g henna powder,30ml Tea tree oil,piping bag,Cellophane sheet and Recipe card.", variants: {"100g Kit": 410, "500g Kit": 1340, "1kg Kit": 2240}, images: ["images/beginners-teatree-kit.jpeg"] },
-            { id: 21, name: "DIY NAILCONE KIT", description: "Contains: 100ml Nail liquid,Mixing powder,Cellophane sheet and Piping bag.", variants: {"100ml": 199, "500ml": 850, "1L": 1690}, images: ["images/diy-nailcone-kit.jpeg"] },
-            { id: 20, name: "HENNA PASTE", description: "Pre-mixed and strained ready-to-use henna paste.STORAGE: 6 months in freezer.", variants: {"500g": 500, "1KG": 980}, images: ["images/henna-paste.jpeg"] },
+            { id: 8, name: "ORGANIC HENNA CONES", description: "Finely strained, organic henna cones for smooth, dark staining results. WEIGHT: 24g. STORAGE: 6 months in freezer.", variants: {"Per cone": 50, "30 pieces": 1050, "100 pieces": 3000}, images: ["images/hcones-image-1.jpeg", "images/hcones-image-2.jpeg","images/hcones-image-3.jpeg"] },
+            { id: 7, name: "RED NAILCONES", description: "Ready-to-use red nail cones for immediate nail color application. WEIGHT: 15g. STORAGE: 1 Year in freezer.", variants: {"Per cone": 30, "30 pieces": 600, "100 pieces": 1850}, images: ["images/red-nailcones-1.jpeg","images/red-nailcones-2.jpeg","images/red-nailcones-3.jpeg"] },
+            { id: 12, name: "MINI BRIDAL BOX", description: "Includes: 4 Organic Henna Cones, 3 Red Nailcones, Aftercare Oil, Aftercare Balm, Sealant Spray. Best for semi bridals.", variants: {"per box": 390}, images: ["images/mini-bridal-box.jpeg"] },
+            { id: 13, name: "MEGA BRIDAL BOX", description: "Includes: 6 organic henna cones, 4 Red nailcones, Aftercare Oil, Aftercare Balm, Sealant spray.", variants: {"One Box": 520}, images: ["images/mega-bridal-box.jpeg"] },
+            { id: 6, name: "AFTERCARE BALM", description: "Aftercare balm to protect and enhance henna stain darkness. Use right after henna removal. STORAGE: 2 years in room temperature.", variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500}, images: ["images/balm-image-1.jpeg", "images/balm-image-2.jpeg"] },
+            { id: 5, name: "SEALANT SPRAY", description: "Henna sealant spray to help seal and darken your henna stain. Use right after the henna design dries. STORAGE: 6 months in freezer.", variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500}, images: ["images/spray-image-1.jpeg"] },
+            { id: 9, name: "AFTERCARE OIL", description: "Can be stored up to 2 years in room temperature. Use to remove dried henna and darken stains.", variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500}, images: ["images/aftercare-oil-1.jpeg", "images/aftercare-oil-2.jpeg"] },
+            { id: 14, name: "MEFIX TAPE", description: "Medical-grade Mefix tape to securely wrap and protect fresh henna. LENGTH: 15cm. BREADTH: 10cm. Use over dried henna.", variants: {"15cm": 45, "1m": 250}, images: ["images/mefix-tape-1.jpeg", "images/mefix-tape-2.jpeg"] },
+            { id: 15, name: "BLACK HENNA", description: "Natural black henna product for black stains. NET WEIGHT: 10g.", variants: {"Per piece": 45}, images: ["images/black-henna-cone.jpeg","images/black-henna-2.jpeg"] },
+            { id: 10, name: "REUSABLE PRACTICE BOOK", description: "A durable, reusable practice book for perfecting designs.", variants: {"Per book": 549}, images: ["images/practice-book-1.jpeg", "images/practice-book-2.jpeg","images/practice-book-3.jpeg","images/practice-book-4.jpeg"] },
+            { id: 11, name: "ORGANIC HENNA POWDER", description: "5 times sifted, super stringy premium quality [Fresh crop], BAQ [Body Art Quality] Rajasthani Henna Powder. STORAGE: 2 years in room temperature.", variants: {"100g": 160, "500g": 380, "1kg": 550, "5kg": 2000}, images: ["images/henna-powder-1.jpeg"] },
+            { id: 16, name: "TEA TREE OIL", description: "100% pure Tea Tree essential oil for henna mixing. STORAGE: 2 years in room temperature.", variants: {"30ml": 200, "100ml": 560, "500ml": 1700, "1L": 2900}, images: ["images/tea-tree-oil.jpeg"] },
+            { id: 17, name: "EUCALYPTUS OIL", description: "100% pure Eucalyptus Globulus essential oil. STORAGE: 2 years in room temperature.", variants: {"30ml": 130, "100ml": 350, "500ml": 1150, "1L": 1800}, images: ["images/eucalyptus-oil.jpeg"] },
+            { id: 18, name: "BEGINNERS EUCALYPTUS KIT", description: "Contains: 100g Henna powder, 30ml Eucalyptus oil, piping bag, Cellophane sheet and Recipe card.", variants: {"100g Kit": 320, "500g Kit": 1100, "1kg Kit": 1999}, images: ["images/beginners-eucalyptus-kit.jpeg"] },
+            { id: 19, name: "BEGINNERS TEA TREE KIT", description: "Contains: 100g henna powder, 30ml Tea tree oil, piping bag, Cellophane sheet and Recipe card.", variants: {"100g Kit": 399, "500g Kit": 1340, "1kg Kit": 2240}, images: ["images/beginners-teatree-kit.jpeg"] },
+            { id: 21, name: "DIY NAILCONE KIT", description: "Contains: 100ml Nail liquid, Mixing powder, Cellophane sheet and Piping bag.", variants: {"100ml": 199, "500ml": 850, "1L": 1690}, images: ["images/diy-nailcone-kit.jpeg"] },
+            { id: 20, name: "HENNA PASTE", description: "Pre-mixed and strained ready-to-use henna paste. STORAGE: 6 months in freezer.", variants: {"500g": 500, "1KG": 980}, images: ["images/henna-paste.jpeg"] },
             { id: 4, name: "NAIL LIQUID", description: "Professional-grade nail liquid for deep color.", variants: {"30ml": 60, "100ml": 180, "1L": 1499}, images: ["images/liquid-image-1.jpeg"] },
-            { id: 2, name: "HERBAL HAIR OIL", description: "Nourishing herbal hair oil for hair health.Prevents dandruff,Pre-mature greying and promotes hair growth", variants: {"100ml": 100, "300ml": 280, "500ml": 480, "1L": 950}, images: ["images/oil-image-1.jpeg"] },
-            { id: 3, name: "EMPTY CONES", description: "Ready to fill empty cones for filling.", variants: {"Per piece": 5,"Pack of 10": 50, "Pack of 50": 200}, images: ["images/cones-image-1.jpeg"] },
-            { id: 22, name: "NAIL PASTE", description: "Ready to use Premium nail henna paste for a deep, long-lasting stain.", variants: {"250g": 350,"500g":675, "1kg": 1299}, images: ["images/nail-paste-image.jpeg"] }
+            { id: 2, name: "HERBAL HAIR OIL", description: "Nourishing herbal hair oil for hair health. Prevents dandruff, premature greying and promotes hair growth.", variants: {"100ml": 100, "300ml": 280, "500ml": 480, "1L": 950}, images: ["images/oil-image-1.jpeg"] },
+            { id: 3, name: "EMPTY CONES", description: "Ready to fill empty cones for filling.", variants: {"Per piece": 5, "Pack of 10": 50, "Pack of 50": 200}, images: ["images/cones-image-1.jpeg"] },
+            { id: 22, name: "NAIL PASTE", description: "Ready to use premium nail henna paste for a deep, long-lasting stain.", variants: {"250g": 350, "500g": 675, "1kg": 1299}, images: ["images/nail-paste-image.jpeg"] }
         ];
 
         let currentProduct = null;
@@ -189,14 +390,13 @@
             currentProduct = productsData.find(p => p.id === id);
 
             if (!currentProduct) {
-                document.body.innerHTML = "<div class='container'><h1>Product Not Found</h1><a href='index.html'>Go Back to Shop</a></div>";
+                document.body.innerHTML = "<div class='container'><h1>Product Not Found</h1><a href='index.html'>Back to Products</a></div>";
                 return;
             }
 
             document.getElementById('product-name').innerText = currentProduct.name;
             document.getElementById('product-description').innerText = currentProduct.description;
             
-            // Image Setup
             const mainImg = document.getElementById('main-product-image');
             mainImg.src = currentProduct.images[0];
             const thumbContainer = document.getElementById('thumbnail-container');
@@ -213,7 +413,6 @@
                 thumbContainer.appendChild(thumb);
             });
 
-            // Variant Setup
             const variantContainer = document.getElementById('variant-options');
             const names = Object.keys(currentProduct.variants);
             if (names.length > 0) {
@@ -241,7 +440,7 @@
 
         function updatePrice() {
             const price = currentProduct.variants[selectedVariantName] || 0;
-            document.getElementById('product-price').innerText = `₹${price}`;
+            document.getElementById('product-price').innerText = `Rs. ${price}`;
         }
 
         function updateQuantity(delta) {
@@ -277,7 +476,7 @@
 
             localStorage.setItem('mehndiStoreCart', JSON.stringify(cart));
             updateCartDisplay();
-            showToast(`✓ ${currentQuantity} item${currentQuantity > 1 ? 's' : ''} added to bag`);
+            showToast(`${currentQuantity} item${currentQuantity > 1 ? 's' : ''} added to bag`);
         }
 
         let toastTimer;
@@ -289,5 +488,114 @@
             toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
         }
     </script>
+
+    <!-- GLITTER EFFECT START (delete this whole block to remove the falling glitter) -->
+    <script>
+    (function () {
+        var GLITTER_ENABLED = true; /* set to false to switch the glitter off */
+        if (!GLITTER_ENABLED) return;
+
+        function startGlitter() {
+            var canvas = document.createElement('canvas');
+            canvas.id = 'glitter-canvas';
+            canvas.setAttribute('aria-hidden', 'true');
+            canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2000;';
+            document.documentElement.appendChild(canvas);
+
+            var ctx = canvas.getContext('2d');
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var W = window.innerWidth, H = window.innerHeight, parts = [];
+
+            var GOLD = ['#D4AF37', '#C9A24B', '#E0BD5A', '#B8893A', '#E6C86E'];
+            var CREAM = ['#FFF4D6', '#F6E7C1', '#FFFAEB', '#F3E2B8'];
+
+            function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+
+            function make(initial) {
+                var cream = Math.random() < 0.42;
+                return {
+                    x: Math.random() * W,
+                    y: initial ? Math.random() * H : -14 - Math.random() * 60,
+                    size: Math.random() * 2.4 + 1.3,
+                    speed: Math.random() * 0.65 + 0.35,
+                    sway: Math.random() * 0.7 + 0.2,
+                    phase: Math.random() * Math.PI * 2,
+                    twinkle: Math.random() * 0.04 + 0.015,
+                    tphase: Math.random() * Math.PI * 2,
+                    color: cream ? pick(CREAM) : pick(GOLD),
+                    cream: cream,
+                    star: Math.random() < 0.35
+                };
+            }
+
+            function resize() {
+                W = window.innerWidth;
+                H = window.innerHeight;
+                canvas.width = Math.round(W * dpr);
+                canvas.height = Math.round(H * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                var target = Math.round(Math.min(110, Math.max(36, W / 14)));
+                while (parts.length < target) parts.push(make(true));
+                if (parts.length > target) parts.length = target;
+            }
+
+            function drawStar(x, y, r) {
+                ctx.beginPath();
+                ctx.moveTo(x, y - r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.quadraticCurveTo(x, y, x, y + r);
+                ctx.quadraticCurveTo(x, y, x - r, y);
+                ctx.quadraticCurveTo(x, y, x, y - r);
+                ctx.closePath();
+            }
+
+            function frame() {
+                ctx.clearRect(0, 0, W, H);
+                for (var i = 0; i < parts.length; i++) {
+                    var p = parts[i];
+                    p.y += p.speed;
+                    p.phase += 0.02;
+                    p.tphase += p.twinkle;
+                    p.x += Math.sin(p.phase) * p.sway * 0.5;
+
+                    if (p.y > H + 14) { parts[i] = make(false); continue; }
+                    if (p.x < -10) p.x = W + 10;
+                    if (p.x > W + 10) p.x = -10;
+
+                    var alpha = 0.3 + 0.7 * Math.abs(Math.sin(p.tphase));
+                    ctx.globalAlpha = alpha;
+                    ctx.fillStyle = p.color;
+
+                    if (p.star) {
+                        drawStar(p.x, p.y, p.size * 2.2);
+                    } else {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size * 0.8, 0, Math.PI * 2);
+                    }
+                    ctx.fill();
+
+                    if (p.cream) {
+                        ctx.lineWidth = 0.6;
+                        ctx.strokeStyle = 'rgba(184, 137, 58, 0.6)';
+                        ctx.stroke();
+                    }
+                }
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(frame);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            requestAnimationFrame(frame);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startGlitter);
+        } else {
+            startGlitter();
+        }
+    })();
+    </script>
+    <!-- GLITTER EFFECT END -->
 </body>
 </html>

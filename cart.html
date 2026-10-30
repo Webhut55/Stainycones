@@ -6,194 +6,320 @@
     <title>Your Bag - StainyCones</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --color-black: #111111;
-            --color-white: #FFFFFF;
-            --color-light-grey: #F5F5F5;
-            --color-dark-grey: #333333;
-            --color-whatsapp: #25D366;
-            --color-error: #cc3333;
-            --color-border: #ebebeb;
-            --color-accent: #f9f9f9;
+            --color-primary: #111827;
+            --color-primary-hover: #1F2937;
+            --color-accent: #9A7B3E;
+            --color-accent-light: #FBF8F1;
+            --color-accent-border: #E6D8B8;
+            --color-bg: #F9FAFB;
+            --color-surface: #FFFFFF;
+            --color-text: #111827;
+            --color-text-muted: #6B7280;
+            --color-border: #E5E7EB;
+            --color-error: #DC2626;
+            --color-error-bg: #FEF2F2;
+            --color-success: #059669;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #fafafa;
-            color: var(--color-black);
-            line-height: 1.6;
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 720px; margin: 0 auto; padding: 20px 20px 60px; }
+        .container { max-width: 760px; margin: 0 auto; padding: 28px 20px 80px; }
 
         /* HEADER */
         .header {
-            background: rgba(255,255,255,0.96);
-            padding: 16px 0 16px;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 16px 0;
             border-bottom: 1px solid var(--color-border);
-            margin-bottom: 30px;
-            position: sticky; top: 0; z-index: 100;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-        .header-inner { max-width: 720px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
+        .header-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         .back-link {
-            text-decoration: none; color: var(--color-black);
-            font-weight: 600; font-size: 0.9rem;
-            display: flex; align-items: center; gap: 5px;
-            transition: color 0.3s;
+            text-decoration: none;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: color 0.2s;
         }
-        .back-link:hover { color: var(--color-dark-grey); }
-        .header-title { font-size: 1rem; font-weight: 800; letter-spacing: 1px; }
+        .back-link:hover { color: var(--color-primary); }
+        .header-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--color-primary);
+        }
 
         /* MIN ORDER BANNER */
         .min-order-banner {
-            background: #fff4f4;
-            color: var(--color-error);
+            background: var(--color-surface);
+            color: var(--color-text-muted);
             padding: 12px 16px;
-            border-radius: 10px;
+            border-radius: 8px;
             text-align: center;
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-            border: 1px solid #ffebeb;
+            font-weight: 500;
+            font-size: 0.82rem;
+            margin-bottom: 24px;
+            border: 1px solid var(--color-border);
         }
 
-        .cart-title { font-size: 2rem; font-weight: 800; margin-bottom: 25px; letter-spacing: -0.5px; }
+        .cart-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.4px;
+            color: var(--color-primary);
+        }
 
         /* CART ITEMS */
         .cart-item {
-            display: flex; align-items: center;
+            display: flex;
+            align-items: center;
             padding: 16px;
             border: 1px solid var(--color-border);
-            border-radius: 16px;
-            margin-bottom: 14px;
-            background: var(--color-white);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: var(--color-surface);
             gap: 16px;
-            transition: box-shadow 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
-        .cart-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
         .item-image {
-            width: 85px; height: 85px;
-            object-fit: cover; border-radius: 12px;
+            width: 84px;
+            height: 84px;
+            object-fit: cover;
+            border-radius: 6px;
             image-orientation: from-image;
-            flex-shrink: 0; background: var(--color-light-grey);
+            flex-shrink: 0;
+            background: #F3F4F6;
         }
         .item-info { flex-grow: 1; }
-        .item-name { font-weight: 700; text-transform: uppercase; font-size: 0.88rem; margin-bottom: 3px; }
-        .item-variant { font-size: 0.78rem; color: #888; margin-bottom: 10px; }
+        .item-name {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.88rem;
+            color: var(--color-primary);
+            margin-bottom: 2px;
+        }
+        .item-variant {
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+            margin-bottom: 10px;
+        }
 
         /* QUANTITY CONTROLS */
         .quantity-controls {
-            display: flex; align-items: center;
+            display: flex;
+            align-items: center;
             border: 1px solid var(--color-border);
-            border-radius: 8px; width: fit-content;
-            overflow: hidden; margin-bottom: 10px;
+            border-radius: 6px;
+            width: fit-content;
+            overflow: hidden;
+            margin-bottom: 8px;
         }
         .qty-btn {
-            border: none; background: var(--color-accent);
-            padding: 5px 13px; cursor: pointer;
-            font-weight: 700; font-size: 1rem;
-            color: var(--color-dark-grey);
+            border: none;
+            background: var(--color-bg);
+            padding: 4px 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-primary);
             transition: background 0.2s;
         }
-        .qty-btn:hover { background: #eee; }
+        .qty-btn:hover { background: var(--color-border); }
         .qty-display {
-            font-weight: 700; color: var(--color-black);
-            min-width: 30px; text-align: center;
-            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            min-width: 32px;
+            text-align: center;
+            font-size: 0.85rem;
         }
 
         /* REMOVE BUTTON */
         .remove-box {
             background: transparent;
-            color: var(--color-error);
-            padding: 3px 0;
+            color: var(--color-text-muted);
+            padding: 2px 0;
             border: none;
-            font-size: 0.78rem;
-            font-weight: 700;
+            font-size: 0.72rem;
+            font-weight: 600;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            transition: opacity 0.2s;
+            transition: color 0.2s;
             display: block;
         }
-        .remove-box:hover { opacity: 0.7; }
+        .remove-box:hover { color: var(--color-error); }
 
-        .item-price { font-weight: 800; font-size: 1rem; flex-shrink: 0; }
+        .item-price {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
 
         /* SUMMARY */
         .cart-summary {
-            margin-top: 30px; padding: 25px;
-            background: var(--color-white);
-            border-radius: 16px;
+            margin-top: 28px;
+            padding: 24px;
+            background: var(--color-surface);
+            border-radius: 8px;
             border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
         }
-        .summary-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; color: #999; margin-bottom: 20px; }
+        .summary-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            margin-bottom: 16px;
+        }
         .summary-row {
-            display: flex; justify-content: space-between;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             padding: 12px 0;
             border-bottom: 1px solid var(--color-border);
-            font-weight: 600; font-size: 0.95rem;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
-        .summary-row:last-of-type { border-bottom: none; font-size: 1.1rem; }
-        .total-amount { color: var(--color-black); font-size: 1.3rem; font-weight: 800; }
+        .summary-row.reward-row {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+        .summary-row:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .total-amount {
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
 
         /* ORDER BUTTON */
         .order-btn {
-            width: 100%; padding: 18px;
-            background-color: var(--color-whatsapp);
-            color: var(--color-white); border: none; border-radius: 12px;
-            font-weight: 800; font-size: 1rem; cursor: pointer;
-            margin-top: 20px; text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
-            transition: all 0.3s ease;
+            width: 100%;
+            padding: 16px;
+            background-color: var(--color-primary);
+            color: var(--color-surface);
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.2s ease, transform 0.2s ease;
         }
-        .order-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45); }
-        .order-btn:active { transform: translateY(0); }
-        .order-btn:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; transform: none; }
+        .order-btn:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-1px);
+        }
+        .order-btn:disabled {
+            background-color: #D1D5DB;
+            color: #6B7280;
+            cursor: not-allowed;
+            transform: none;
+        }
 
-        .error-text { color: var(--color-error); font-size: 0.82rem; margin-top: 12px; text-align: center; display: none; font-weight: 600; }
+        .error-text {
+            color: var(--color-error);
+            font-size: 0.8rem;
+            margin-top: 12px;
+            text-align: center;
+            display: none;
+            font-weight: 500;
+        }
 
         /* EMPTY STATE */
         .empty-cart-state {
-            display: none; text-align: center;
-            padding: 80px 20px; color: #aaa;
+            display: none;
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
         }
-        .empty-icon { font-size: 4rem; margin-bottom: 15px; }
-        .empty-cart-state p { font-size: 1rem; font-weight: 600; margin-bottom: 20px; color: #888; }
+        .empty-cart-state p {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: var(--color-text-muted);
+        }
         .empty-cart-state a {
             display: inline-block;
-            padding: 14px 30px;
-            background: var(--color-black);
-            color: var(--color-white);
+            padding: 12px 28px;
+            background: var(--color-primary);
+            color: var(--color-surface);
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.9rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.82rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            transition: opacity 0.3s;
+            transition: background 0.2s;
         }
-        .empty-cart-state a:hover { opacity: 0.85; }
+        .empty-cart-state a:hover { background: var(--color-primary-hover); }
+
+        /* ====================================================
+           AESTHETIC REFINEMENTS
+        ==================================================== */
+        :root {
+            --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+            --gold-deep: #8A6A2B;
+            --gold-mid: #C9A24B;
+            --gold-soft: #E6D8B8;
+            --ivory: #FBF9F5;
+        }
+        body { background-color: var(--ivory); }
+        .header { border-bottom-color: #EFE7D3; }
+        ::selection { background: var(--gold-soft); color: var(--color-primary); }
+
+        .header-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; letter-spacing: 3px; }
+        .cart-title { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.5px; }
+        .summary-title { font-family: var(--font-display); font-weight: 600; }
+        .cart-item, .cart-summary { border-color: #F0E9D8; }
     </style>
 </head>
 <body onload="renderCart()">
 
     <header class="header">
         <div class="header-inner">
-            <a href="index.html" class="back-link">← Continue Shopping</a>
+            <a href="index.html" class="back-link">Continue Shopping</a>
             <span class="header-title">STAINYCONES</span>
         </div>
     </header>
 
     <div class="container">
-        <div class="min-order-banner">🛍️ Minimum order value is ₹150/-</div>
+        <div class="min-order-banner">Minimum order value is Rs. 150</div>
 
         <h1 class="cart-title">Your Bag</h1>
 
@@ -204,28 +330,45 @@
                 <p class="summary-title">Order Summary</p>
                 <div class="summary-row">
                     <span>Subtotal</span>
-                    <span id="subtotal">₹0</span>
+                    <span id="subtotal">Rs. 0</span>
+                </div>
+                <div class="summary-row reward-row" id="reward-summary-row" style="display: none;">
+                    <span id="reward-label">5 Years Anniversary Gift</span>
+                    <span id="reward-value"></span>
                 </div>
                 <div class="summary-row">
-                    <span>Total</span>
-                    <span id="grand-total" class="total-amount">₹0</span>
+                    <span>Total Payable</span>
+                    <span id="grand-total" class="total-amount">Rs. 0</span>
                 </div>
             </div>
 
             <button id="place-order-btn" class="order-btn" onclick="placeOrder()">
-                📲 Place Order via WhatsApp
+                Place Order via WhatsApp
             </button>
-            <p id="min-error-msg" class="error-text">Minimum order amount is ₹150. Please add more items.</p>
+            <p id="min-error-msg" class="error-text">Minimum order amount is Rs. 150. Please add more items.</p>
         </div>
 
         <div id="empty-cart" class="empty-cart-state">
-            <div class="empty-icon">🛒</div>
-            <p>Your bag is empty!</p>
-            <a href="index.html">Shop Now</a>
+            <p>Your shopping bag is empty.</p>
+            <a href="index.html">Shop Products</a>
         </div>
     </div>
 
     <script>
+        const DEVICE_GIFT_KEY = 'stainyConesDeviceGift_v1';
+
+        function getActiveGift() {
+            const raw = localStorage.getItem(DEVICE_GIFT_KEY);
+            if (!raw) return null;
+            try {
+                const data = JSON.parse(raw);
+                if (data && data.opened && data.won && !data.orderCompleted) {
+                    return data;
+                }
+            } catch (e) {}
+            return null;
+        }
+
         function renderCart() {
             const cart = JSON.parse(localStorage.getItem('mehndiStoreCart')) || [];
             const container = document.getElementById('cart-items-container');
@@ -233,6 +376,9 @@
             const emptyMsg = document.getElementById('empty-cart');
             const orderBtn = document.getElementById('place-order-btn');
             const errorMsg = document.getElementById('min-error-msg');
+            const rewardRow = document.getElementById('reward-summary-row');
+            const rewardLabel = document.getElementById('reward-label');
+            const rewardValue = document.getElementById('reward-value');
 
             if (cart.length === 0) {
                 container.innerHTML = '';
@@ -244,11 +390,11 @@
             emptyMsg.style.display = 'none';
             summary.style.display = 'block';
             container.innerHTML = '';
-            let total = 0;
+            let subtotal = 0;
 
             cart.forEach((item, index) => {
                 const itemTotal = item.price * item.quantity;
-                total += itemTotal;
+                subtotal += itemTotal;
                 const div = document.createElement('div');
                 div.className = 'cart-item';
                 div.innerHTML = `
@@ -257,21 +403,41 @@
                         <div class="item-name">${item.name}</div>
                         <div class="item-variant">${item.variant}</div>
                         <div class="quantity-controls">
-                            <button class="qty-btn" onclick="updateQty(${index}, -1)">−</button>
+                            <button class="qty-btn" onclick="updateQty(${index}, -1)">-</button>
                             <span class="qty-display">${item.quantity}</span>
                             <button class="qty-btn" onclick="updateQty(${index}, 1)">+</button>
                         </div>
-                        <button class="remove-box" onclick="removeItem(${index})">✕ Remove</button>
+                        <button class="remove-box" onclick="removeItem(${index})">Remove</button>
                     </div>
-                    <div class="item-price">₹${itemTotal}</div>
+                    <div class="item-price">Rs. ${itemTotal}</div>
                 `;
                 container.appendChild(div);
             });
 
-            document.getElementById('subtotal').innerText = `₹${total}`;
-            document.getElementById('grand-total').innerText = `₹${total}`;
+            document.getElementById('subtotal').innerText = `Rs. ${subtotal}`;
 
-            if (total < 150) {
+            // Apply 5 Years Gift Box Reward if won on this device
+            const activeGift = getActiveGift();
+            let finalTotal = subtotal;
+
+            if (activeGift) {
+                rewardRow.style.display = 'flex';
+                rewardLabel.innerText = `5 Years Gift (${activeGift.name})`;
+
+                if (activeGift.type === 'discount') {
+                    const discountAmt = Math.round((subtotal * activeGift.value) / 100);
+                    finalTotal = subtotal - discountAmt;
+                    rewardValue.innerText = `- Rs. ${discountAmt}`;
+                } else {
+                    rewardValue.innerText = `Complimentary`;
+                }
+            } else {
+                rewardRow.style.display = 'none';
+            }
+
+            document.getElementById('grand-total').innerText = `Rs. ${finalTotal}`;
+
+            if (subtotal < 150) {
                 orderBtn.disabled = true;
                 errorMsg.style.display = 'block';
             } else {
@@ -296,14 +462,152 @@
         }
 
         function placeOrder() {
-            const cart = JSON.parse(localStorage.getItem('mehndiStoreCart'));
-            let message = 'New Order from StainyCones Website:\n\n';
+            const cart = JSON.parse(localStorage.getItem('mehndiStoreCart')) || [];
+            if (cart.length === 0) return;
+
+            let subtotal = 0;
+            let message = '*NEW ORDER - STAINYCONES*\n\n';
+
             cart.forEach(item => {
-                message += `• ${item.name} (${item.variant}) x${item.quantity} = ₹${item.price * item.quantity}\n`;
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                message += `- ${item.name} (${item.variant}) x ${item.quantity} = Rs. ${itemTotal}\n`;
             });
-            message += `\nTotal: ${document.getElementById('grand-total').innerText}`;
-            window.open(`https://wa.me/919744468830?text=${encodeURIComponent(message)}`, '_blank');
+
+            message += `\n*Subtotal:* Rs. ${subtotal}`;
+
+            const activeGift = getActiveGift();
+            if (activeGift) {
+                message += `\n*5 Years Anniversary Gift:* ${activeGift.name}`;
+                if (activeGift.type === 'discount') {
+                    const discountAmt = Math.round((subtotal * activeGift.value) / 100);
+                    const finalPayable = subtotal - discountAmt;
+                    message += ` (-Rs. ${discountAmt})`;
+                    message += `\n*Total Payable:* Rs. ${finalPayable}`;
+                } else {
+                    message += ` (Complimentary with Order)`;
+                    message += `\n*Total Payable:* Rs. ${subtotal}`;
+                }
+
+                // Mark the single device gift box as redeemed so it cannot be reused
+                activeGift.orderCompleted = true;
+                localStorage.setItem(DEVICE_GIFT_KEY, JSON.stringify(activeGift));
+            } else {
+                message += `\n*Total Payable:* Rs. ${subtotal}`;
+            }
+
+            window.open(`https://wa.me/916238562873?text=${encodeURIComponent(message)}`, '_blank');
+            renderCart();
         }
     </script>
+
+    <!-- GLITTER EFFECT START (delete this whole block to remove the falling glitter) -->
+    <script>
+    (function () {
+        var GLITTER_ENABLED = true; /* set to false to switch the glitter off */
+        if (!GLITTER_ENABLED) return;
+
+        function startGlitter() {
+            var canvas = document.createElement('canvas');
+            canvas.id = 'glitter-canvas';
+            canvas.setAttribute('aria-hidden', 'true');
+            canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2000;';
+            document.documentElement.appendChild(canvas);
+
+            var ctx = canvas.getContext('2d');
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+            var W = window.innerWidth, H = window.innerHeight, parts = [];
+
+            var GOLD = ['#D4AF37', '#C9A24B', '#E0BD5A', '#B8893A', '#E6C86E'];
+            var CREAM = ['#FFF4D6', '#F6E7C1', '#FFFAEB', '#F3E2B8'];
+
+            function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+
+            function make(initial) {
+                var cream = Math.random() < 0.42;
+                return {
+                    x: Math.random() * W,
+                    y: initial ? Math.random() * H : -14 - Math.random() * 60,
+                    size: Math.random() * 2.4 + 1.3,
+                    speed: Math.random() * 0.65 + 0.35,
+                    sway: Math.random() * 0.7 + 0.2,
+                    phase: Math.random() * Math.PI * 2,
+                    twinkle: Math.random() * 0.04 + 0.015,
+                    tphase: Math.random() * Math.PI * 2,
+                    color: cream ? pick(CREAM) : pick(GOLD),
+                    cream: cream,
+                    star: Math.random() < 0.35
+                };
+            }
+
+            function resize() {
+                W = window.innerWidth;
+                H = window.innerHeight;
+                canvas.width = Math.round(W * dpr);
+                canvas.height = Math.round(H * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                var target = Math.round(Math.min(110, Math.max(36, W / 14)));
+                while (parts.length < target) parts.push(make(true));
+                if (parts.length > target) parts.length = target;
+            }
+
+            function drawStar(x, y, r) {
+                ctx.beginPath();
+                ctx.moveTo(x, y - r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.quadraticCurveTo(x, y, x, y + r);
+                ctx.quadraticCurveTo(x, y, x - r, y);
+                ctx.quadraticCurveTo(x, y, x, y - r);
+                ctx.closePath();
+            }
+
+            function frame() {
+                ctx.clearRect(0, 0, W, H);
+                for (var i = 0; i < parts.length; i++) {
+                    var p = parts[i];
+                    p.y += p.speed;
+                    p.phase += 0.02;
+                    p.tphase += p.twinkle;
+                    p.x += Math.sin(p.phase) * p.sway * 0.5;
+
+                    if (p.y > H + 14) { parts[i] = make(false); continue; }
+                    if (p.x < -10) p.x = W + 10;
+                    if (p.x > W + 10) p.x = -10;
+
+                    var alpha = 0.3 + 0.7 * Math.abs(Math.sin(p.tphase));
+                    ctx.globalAlpha = alpha;
+                    ctx.fillStyle = p.color;
+
+                    if (p.star) {
+                        drawStar(p.x, p.y, p.size * 2.2);
+                    } else {
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size * 0.8, 0, Math.PI * 2);
+                    }
+                    ctx.fill();
+
+                    if (p.cream) {
+                        ctx.lineWidth = 0.6;
+                        ctx.strokeStyle = 'rgba(184, 137, 58, 0.6)';
+                        ctx.stroke();
+                    }
+                }
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(frame);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            requestAnimationFrame(frame);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startGlitter);
+        } else {
+            startGlitter();
+        }
+    })();
+    </script>
+    <!-- GLITTER EFFECT END -->
 </body>
 </html>
