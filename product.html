@@ -312,7 +312,7 @@
         <div class="container" style="display: flex; width: 100%; align-items: center; padding-top: 0; padding-bottom: 0;">
             <a href="index.html" class="back-link">Back to Products</a>
             <a href="cart.html" class="cart-link">
-                <img src="cart-icon.jpeg" class="cart-logo" alt="Cart">
+                <img src="https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375717/cart-icon.jpg" class="cart-logo" alt="Cart">
                 <span class="cart-count" id="cart-count">0</span>
             </a>
         </div>
@@ -357,27 +357,209 @@
 
     <script>
        const productsData = [
-            { id: 8, name: "ORGANIC HENNA CONES", description: "Finely strained, organic henna cones for smooth, dark staining results. WEIGHT: 24g. STORAGE: 6 months in freezer.", variants: {"Per cone": 50, "30 pieces": 1050, "100 pieces": 3000}, images: ["hcones-image-1.jpeg", "hcones-image-2.jpeg","hcones-image-3.jpeg"] },
-            { id: 7, name: "RED NAILCONES", description: "Ready-to-use red nail cones for immediate nail color application. WEIGHT: 15g. STORAGE: 1 Year in freezer.", variants: {"Per cone": 30, "30 pieces": 600, "100 pieces": 1850}, images: ["red-nailcones-1.jpeg","red-nailcones-2.jpeg","red-nailcones-3.jpeg"] },
-            { id: 12, name: "MINI BRIDAL BOX", description: "Includes: 4 Organic Henna Cones, 3 Red Nailcones, Aftercare Oil, Aftercare Balm, Sealant Spray. Best for semi bridals.", variants: {"per box": 390}, images: ["mini-bridal-box.jpeg"] },
-            { id: 13, name: "MEGA BRIDAL BOX", description: "Includes: 6 organic henna cones, 4 Red nailcones, Aftercare Oil, Aftercare Balm, Sealant spray.", variants: {"One Box": 520}, images: ["mega-bridal-box.jpeg"] },
-            { id: 6, name: "AFTERCARE BALM", description: "Aftercare balm to protect and enhance henna stain darkness. Use right after henna removal. STORAGE: 2 years in room temperature.", variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500}, images: ["balm-image-1.jpeg", "balm-image-2.jpeg"] },
-            { id: 5, name: "SEALANT SPRAY", description: "Henna sealant spray to help seal and darken your henna stain. Use right after the henna design dries. STORAGE: 6 months in freezer.", variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500}, images: ["spray-image-1.jpeg"] },
-            { id: 9, name: "AFTERCARE OIL", description: "Can be stored up to 2 years in room temperature. Use to remove dried henna and darken stains.", variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500}, images: ["aftercare-oil-1.jpeg", "aftercare-oil-2.jpeg"] },
-            { id: 14, name: "MEFIX TAPE", description: "Medical-grade Mefix tape to securely wrap and protect fresh henna. LENGTH: 15cm. BREADTH: 10cm. Use over dried henna.", variants: {"15cm": 45, "1m": 250}, images: ["mefix-tape-1.jpeg", "mefix-tape-2.jpeg"] },
-            { id: 15, name: "BLACK HENNA", description: "Natural black henna product for black stains. NET WEIGHT: 10g.", variants: {"Per piece": 45}, images: ["black-henna-cone.jpeg","black-henna-2.jpeg"] },
-            { id: 10, name: "REUSABLE PRACTICE BOOK", description: "A durable, reusable practice book for perfecting designs.", variants: {"Per book": 549}, images: ["practice-book-1.jpeg", "practice-book-2.jpeg","practice-book-3.jpeg","practice-book-4.jpeg"] },
-            { id: 11, name: "ORGANIC HENNA POWDER", description: "5 times sifted, super stringy premium quality [Fresh crop], BAQ [Body Art Quality] Rajasthani Henna Powder. STORAGE: 2 years in room temperature.", variants: {"100g": 160, "500g": 380, "1kg": 550, "5kg": 2000}, images: ["henna-powder-1.jpeg"] },
-            { id: 16, name: "TEA TREE OIL", description: "100% pure Tea Tree essential oil for henna mixing. STORAGE: 2 years in room temperature.", variants: {"30ml": 200, "100ml": 560, "500ml": 1700, "1L": 2900}, images: ["tea-tree-oil.jpeg"] },
-            { id: 17, name: "EUCALYPTUS OIL", description: "100% pure Eucalyptus Globulus essential oil. STORAGE: 2 years in room temperature.", variants: {"30ml": 130, "100ml": 350, "500ml": 1150, "1L": 1800}, images: ["eucalyptus-oil.jpeg"] },
-            { id: 18, name: "BEGINNERS EUCALYPTUS KIT", description: "Contains: 100g Henna powder, 30ml Eucalyptus oil, piping bag, Cellophane sheet and Recipe card.", variants: {"100g Kit": 320, "500g Kit": 1100, "1kg Kit": 1999}, images: ["beginners-eucalyptus-kit.jpeg"] },
-            { id: 19, name: "BEGINNERS TEA TREE KIT", description: "Contains: 100g henna powder, 30ml Tea tree oil, piping bag, Cellophane sheet and Recipe card.", variants: {"100g Kit": 399, "500g Kit": 1340, "1kg Kit": 2240}, images: ["beginners-teatree-kit.jpeg"] },
-            { id: 21, name: "DIY NAILCONE KIT", description: "Contains: 100ml Nail liquid, Mixing powder, Cellophane sheet and Piping bag.", variants: {"100ml": 199, "500ml": 850, "1L": 1690}, images: ["diy-nailcone-kit.jpeg"] },
-            { id: 20, name: "HENNA PASTE", description: "Pre-mixed and strained ready-to-use henna paste. STORAGE: 6 months in freezer.", variants: {"500g": 500, "1KG": 980}, images: ["henna-paste.jpeg"] },
-            { id: 4, name: "NAIL LIQUID", description: "Professional-grade nail liquid for deep color.", variants: {"30ml": 60, "100ml": 180, "1L": 1499}, images: ["liquid-image-1.jpeg"] },
-            { id: 2, name: "HERBAL HAIR OIL", description: "Nourishing herbal hair oil for hair health. Prevents dandruff, premature greying and promotes hair growth.", variants: {"100ml": 100, "300ml": 280, "500ml": 480, "1L": 950}, images: ["oil-image-1.jpeg"] },
-            { id: 3, name: "EMPTY CONES", description: "Ready to fill empty cones for filling.", variants: {"Per piece": 5, "Pack of 10": 50, "Pack of 50": 200}, images: ["cones-image-1.jpeg"] },
-            { id: 22, name: "NAIL PASTE", description: "Ready to use premium nail henna paste for a deep, long-lasting stain.", variants: {"250g": 350, "500g": 675, "1kg": 1299}, images: ["nail-paste-image.jpeg"] }
+            {
+                id: 8,
+                name: "ORGANIC HENNA CONES",
+                description: "Finely strained, organic henna cones for smooth, dark staining results. WEIGHT: 24g. STORAGE: 6 months in freezer.",
+                variants: {"Per cone": 50, "30 pieces": 1050, "100 pieces": 3000},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375803/hcones-image-1.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375799/hcones-image-2.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375808/hcones-image-3.jpg"
+                ]
+            },
+            {
+                id: 7,
+                name: "RED NAILCONES",
+                description: "Ready-to-use red nail cones for immediate nail color application. WEIGHT: 15g. STORAGE: 1 Year in freezer.",
+                variants: {"Per cone": 30, "30 pieces": 600, "100 pieces": 1850},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375764/red-nailcones-1.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375800/red-nailcones-2.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375808/red-nailcones-3.jpg"
+                ]
+            },
+            {
+                id: 12,
+                name: "MINI BRIDAL BOX",
+                description: "Includes: 4 Organic Henna Cones, 3 Red Nailcones, Aftercare Oil, Aftercare Balm, Sealant Spray. Best for semi bridals.",
+                variants: {"per box": 390},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375783/mini-bridal-box.jpg"
+                ]
+            },
+            {
+                id: 13,
+                name: "MEGA BRIDAL BOX",
+                description: "Includes: 6 organic henna cones, 4 Red nailcones, Aftercare Oil, Aftercare Balm, Sealant spray.",
+                variants: {"One Box": 520},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375723/mega-bridal-box.jpg"
+                ]
+            },
+            {
+                id: 6,
+                name: "AFTERCARE BALM",
+                description: "Aftercare balm to protect and enhance henna stain darkness. Use right after henna removal. STORAGE: 2 years in room temperature.",
+                variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375806/balm-image-1.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375808/balm-image-2.jpg"
+                ]
+            },
+            {
+                id: 5,
+                name: "SEALANT SPRAY",
+                description: "Henna sealant spray to help seal and darken your henna stain. Use right after the henna design dries. STORAGE: 6 months in freezer.",
+                variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375730/spray-image-1.jpg"
+                ]
+            },
+            {
+                id: 9,
+                name: "AFTERCARE OIL",
+                description: "Can be stored up to 2 years in room temperature. Use to remove dried henna and darken stains.",
+                variants: {"Per piece": 40, "30 pieces": 840, "100 pieces": 2500},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375750/aftercare-oil-1.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375731/aftercare-oil-2.jpg"
+                ]
+            },
+            {
+                id: 14,
+                name: "MEFIX TAPE",
+                description: "Medical-grade Mefix tape to securely wrap and protect fresh henna. LENGTH: 15cm. BREADTH: 10cm. Use over dried henna.",
+                variants: {"15cm": 45, "1m": 250},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375725/mefix-tape-1.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375732/mefix-tape-2.jpg"
+                ]
+            },
+            {
+                id: 15,
+                name: "BLACK HENNA",
+                description: "Natural black henna product for black stains. NET WEIGHT: 10g.",
+                variants: {"Per piece": 45},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375767/black-henna-cone.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375802/black-henna-2.jpg"
+                ]
+            },
+            {
+                id: 10,
+                name: "REUSABLE PRACTICE BOOK",
+                description: "A durable, reusable practice book for perfecting designs.",
+                variants: {"Per book": 549},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375761/practice-book-1.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375763/practice-book-2.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375765/practice-book-3.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375779/practice-book-4.jpg"
+                ]
+            },
+            {
+                id: 11,
+                name: "ORGANIC HENNA POWDER",
+                description: "5 times sifted, super stringy premium quality [Fresh crop], BAQ [Body Art Quality] Rajasthani Henna Powder. STORAGE: 2 years in room temperature.",
+                variants: {"100g": 160, "500g": 380, "1kg": 550, "5kg": 2000},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375780/henna-powder-1.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375775/henna-powder-2.jpg"
+                ]
+            },
+            {
+                id: 16,
+                name: "TEA TREE OIL",
+                description: "100% pure Tea Tree essential oil for henna mixing. STORAGE: 2 years in room temperature.",
+                variants: {"30ml": 200, "100ml": 560, "500ml": 1700, "1L": 2900},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375796/tea-tree-oil.jpg"
+                ]
+            },
+            {
+                id: 17,
+                name: "EUCALYPTUS OIL",
+                description: "100% pure Eucalyptus Globulus essential oil. STORAGE: 2 years in room temperature.",
+                variants: {"30ml": 130, "100ml": 350, "500ml": 1150, "1L": 1800},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375781/eucalyptus-oil.jpg"
+                ]
+            },
+            {
+                id: 18,
+                name: "BEGINNERS EUCALYPTUS KIT",
+                description: "Contains: 100g Henna powder, 30ml Eucalyptus oil, piping bag, Cellophane sheet and Recipe card.",
+                variants: {"100g Kit": 320, "500g Kit": 1100, "1kg Kit": 1999},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375735/beginners-eucalyptus-kit.jpg"
+                ]
+            },
+            {
+                id: 19,
+                name: "BEGINNERS TEA TREE KIT",
+                description: "Contains: 100g henna powder, 30ml Tea tree oil, piping bag, Cellophane sheet and Recipe card.",
+                variants: {"100g Kit": 399, "500g Kit": 1340, "1kg Kit": 2240},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375740/beginners-teatree-kit.jpg"
+                ]
+            },
+            {
+                id: 21,
+                name: "DIY NAILCONE KIT",
+                description: "Contains: 100ml Nail liquid, Mixing powder, Cellophane sheet and Piping bag.",
+                variants: {"100ml": 199, "500ml": 850, "1L": 1690},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375786/diy-nailcone-kit.jpg"
+                ]
+            },
+            {
+                id: 20,
+                name: "HENNA PASTE",
+                description: "Pre-mixed and strained ready-to-use henna paste. STORAGE: 6 months in freezer.",
+                variants: {"500g": 500, "1KG": 980},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375802/henna-paste.jpg"
+                ]
+            },
+            {
+                id: 4,
+                name: "NAIL LIQUID",
+                description: "Professional-grade nail liquid for deep color.",
+                variants: {"30ml": 60, "100ml": 180, "1L": 1499},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375729/liquid-image-1.jpg"
+                ]
+            },
+            {
+                id: 2,
+                name: "HERBAL HAIR OIL",
+                description: "Nourishing herbal hair oil for hair health. Prevents dandruff, premature greying and promotes hair growth.",
+                variants: {"100ml": 100, "300ml": 280, "500ml": 480, "1L": 950},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375736/oil-image-1.jpg"
+                ]
+            },
+            {
+                id: 3,
+                name: "EMPTY CONES",
+                description: "Ready to fill empty cones for filling.",
+                variants: {"Per piece": 5, "Pack of 10": 50, "Pack of 50": 200},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375787/cones-image-1.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375763/cones-image-2.jpg",
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375737/cones-image-3.jpg"
+                ]
+            },
+            {
+                id: 22,
+                name: "NAIL PASTE",
+                description: "Ready to use premium nail henna paste for a deep, long-lasting stain.",
+                variants: {"250g": 350, "500g": 675, "1kg": 1299},
+                images: [
+                    "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375734/nail-paste-image.jpg"
+                ]
+            }
         ];
 
         let currentProduct = null;
@@ -463,6 +645,7 @@
             
             if (existing) {
                 existing.quantity += currentQuantity;
+                existing.image = currentProduct.images[0];
             } else {
                 cart.push({
                     id: currentProduct.id,

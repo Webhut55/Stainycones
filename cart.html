@@ -357,6 +357,37 @@
     <script>
         const DEVICE_GIFT_KEY = 'stainyConesDeviceGift_v1';
 
+        const PRODUCT_IMAGE_MAP = {
+            8: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375803/hcones-image-1.jpg",
+            7: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375764/red-nailcones-1.jpg",
+            12: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375783/mini-bridal-box.jpg",
+            13: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375723/mega-bridal-box.jpg",
+            6: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375806/balm-image-1.jpg",
+            5: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375730/spray-image-1.jpg",
+            9: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375750/aftercare-oil-1.jpg",
+            14: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375725/mefix-tape-1.jpg",
+            15: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375767/black-henna-cone.jpg",
+            10: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375761/practice-book-1.jpg",
+            11: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375780/henna-powder-1.jpg",
+            16: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375796/tea-tree-oil.jpg",
+            17: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375781/eucalyptus-oil.jpg",
+            18: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375735/beginners-eucalyptus-kit.jpg",
+            19: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375740/beginners-teatree-kit.jpg",
+            21: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375786/diy-nailcone-kit.jpg",
+            20: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375802/henna-paste.jpg",
+            4: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375729/liquid-image-1.jpg",
+            2: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375736/oil-image-1.jpg",
+            3: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375787/cones-image-1.jpg",
+            22: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375734/nail-paste-image.jpg"
+        };
+
+        function resolveImageUrl(item) {
+            if (item.image && item.image.startsWith('http')) {
+                return item.image;
+            }
+            return PRODUCT_IMAGE_MAP[item.id] || item.image;
+        }
+
         function getActiveGift() {
             const raw = localStorage.getItem(DEVICE_GIFT_KEY);
             if (!raw) return null;
@@ -395,10 +426,11 @@
             cart.forEach((item, index) => {
                 const itemTotal = item.price * item.quantity;
                 subtotal += itemTotal;
+                const imgSrc = resolveImageUrl(item);
                 const div = document.createElement('div');
                 div.className = 'cart-item';
                 div.innerHTML = `
-                    <img src="${item.image}" class="item-image" alt="${item.name}" loading="lazy">
+                    <img src="${imgSrc}" class="item-image" alt="${item.name}" loading="lazy">
                     <div class="item-info">
                         <div class="item-name">${item.name}</div>
                         <div class="item-variant">${item.variant}</div>
