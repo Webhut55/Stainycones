@@ -206,10 +206,6 @@
             font-weight: 500;
             font-size: 0.9rem;
         }
-        .summary-row.reward-row {
-            color: var(--color-accent);
-            font-weight: 600;
-        }
         .summary-row:last-of-type {
             border-bottom: none;
             padding-bottom: 0;
@@ -332,10 +328,6 @@
                     <span>Subtotal</span>
                     <span id="subtotal">Rs. 0</span>
                 </div>
-                <div class="summary-row reward-row" id="reward-summary-row" style="display: none;">
-                    <span id="reward-label">5 Years Anniversary Gift</span>
-                    <span id="reward-value"></span>
-                </div>
                 <div class="summary-row">
                     <span>Total Payable</span>
                     <span id="grand-total" class="total-amount">Rs. 0</span>
@@ -355,8 +347,6 @@
     </div>
 
     <script>
-        const DEVICE_GIFT_KEY = 'stainyConesDeviceGift_v1';
-
         const PRODUCT_IMAGE_MAP = {
             8: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375803/hcones-image-1.jpg",
             7: "https://res.cloudinary.com/jmq5zyvr/image/upload/v1793375764/red-nailcones-1.jpg",
@@ -388,18 +378,6 @@
             return PRODUCT_IMAGE_MAP[item.id] || item.image;
         }
 
-        function getActiveGift() {
-            const raw = localStorage.getItem(DEVICE_GIFT_KEY);
-            if (!raw) return null;
-            try {
-                const data = JSON.parse(raw);
-                if (data && data.opened && data.won && !data.orderCompleted) {
-                    return data;
-                }
-            } catch (e) {}
-            return null;
-        }
-
         function renderCart() {
             const cart = JSON.parse(localStorage.getItem('mehndiStoreCart')) || [];
             const container = document.getElementById('cart-items-container');
@@ -407,9 +385,6 @@
             const emptyMsg = document.getElementById('empty-cart');
             const orderBtn = document.getElementById('place-order-btn');
             const errorMsg = document.getElementById('min-error-msg');
-            const rewardRow = document.getElementById('reward-summary-row');
-            const rewardLabel = document.getElementById('reward-label');
-            const rewardValue = document.getElementById('reward-value');
 
             if (cart.length === 0) {
                 container.innerHTML = '';
@@ -448,26 +423,7 @@
 
             document.getElementById('subtotal').innerText = `Rs. ${subtotal}`;
 
-            // Apply 5 Years Gift Box Reward if won on this device
-            const activeGift = getActiveGift();
-            let finalTotal = subtotal;
-
-            if (activeGift) {
-                rewardRow.style.display = 'flex';
-                rewardLabel.innerText = `5 Years Gift (${activeGift.name})`;
-
-                if (activeGift.type === 'discount') {
-                    const discountAmt = Math.round((subtotal * activeGift.value) / 100);
-                    finalTotal = subtotal - discountAmt;
-                    rewardValue.innerText = `- Rs. ${discountAmt}`;
-                } else {
-                    rewardValue.innerText = `Complimentary`;
-                }
-            } else {
-                rewardRow.style.display = 'none';
-            }
-
-            document.getElementById('grand-total').innerText = `Rs. ${finalTotal}`;
+            document.getElementById('grand-total').innerText = `Rs. ${subtotal}`;
 
             if (subtotal < 150) {
                 orderBtn.disabled = true;
@@ -508,25 +464,7 @@
 
             message += `\n*Subtotal:* Rs. ${subtotal}`;
 
-            const activeGift = getActiveGift();
-            if (activeGift) {
-                message += `\n*5 Years Anniversary Gift:* ${activeGift.name}`;
-                if (activeGift.type === 'discount') {
-                    const discountAmt = Math.round((subtotal * activeGift.value) / 100);
-                    const finalPayable = subtotal - discountAmt;
-                    message += ` (-Rs. ${discountAmt})`;
-                    message += `\n*Total Payable:* Rs. ${finalPayable}`;
-                } else {
-                    message += ` (Complimentary with Order)`;
-                    message += `\n*Total Payable:* Rs. ${subtotal}`;
-                }
-
-                // Mark the single device gift box as redeemed so it cannot be reused
-                activeGift.orderCompleted = true;
-                localStorage.setItem(DEVICE_GIFT_KEY, JSON.stringify(activeGift));
-            } else {
-                message += `\n*Total Payable:* Rs. ${subtotal}`;
-            }
+            message += `\n*Total Payable:* Rs. ${subtotal}`;
 
             window.open(`https://wa.me/916238562873?text=${encodeURIComponent(message)}`, '_blank');
             renderCart();
